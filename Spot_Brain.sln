@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Spot_Brain", "Spot_Brain\Spot_Brain.vcxproj", "{4B639F98-DD80-4027-9E25-4B72C4E82178}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "The_Brain", "The_Brain\The_Brain.vcxproj", "{8581292E-D510-4DB2-A41D-08BE80BC6FCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B639F98-DD80-4027-9E25-4B72C4E82178}.Debug|x64.ActiveCfg = Debug|x64
+		{4B639F98-DD80-4027-9E25-4B72C4E82178}.Debug|x64.Build.0 = Debug|x64
+		{4B639F98-DD80-4027-9E25-4B72C4E82178}.Release|x64.ActiveCfg = Release|x64
+		{4B639F98-DD80-4027-9E25-4B72C4E82178}.Release|x64.Build.0 = Release|x64
+		{8581292E-D510-4DB2-A41D-08BE80BC6FCC}.Debug|x64.ActiveCfg = Debug|x64
+		{8581292E-D510-4DB2-A41D-08BE80BC6FCC}.Debug|x64.Build.0 = Debug|x64
+		{8581292E-D510-4DB2-A41D-08BE80BC6FCC}.Release|x64.ActiveCfg = Release|x64
+		{8581292E-D510-4DB2-A41D-08BE80BC6FCC}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85A54654-3D9E-483E-83A7-0FDA4D487DC4}
+	EndGlobalSection
+EndGlobal

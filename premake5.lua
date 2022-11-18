@@ -15,7 +15,7 @@ workspace "Spot_Brain"
 	IncludeDir = {}
 	IncludeDir["GLFW"] = "Spot_Brain/Vendor/GLFW/include"
 
-	include "Spot_Brain/Vendor/GLFW"
+	include "Spot_Brain/Vendor/GLFW/"
 
 	project "Spot_Brain"
 		location "Spot_Brain"
@@ -44,7 +44,7 @@ workspace "Spot_Brain"
 		filter "system:windows"
 			cppdialect "C++17"
 			systemversion "latest"
-			staticruntime "On"
+			staticruntime "off"
 			
 			defines {
 				"SB_PLATFORM_WINDOWS",
@@ -58,14 +58,17 @@ workspace "Spot_Brain"
 			
 		filter "configurations:Debug"
 			defines "SB_DEBUG"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "SB_RELEASE"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "SB_DIST"
+			runtime "Release"
 			optimize "On"
 	
 	
@@ -92,19 +95,22 @@ workspace "Spot_Brain"
 
 		filter "system:windows"
 			cppdialect "C++17"
-			staticruntime "On"
+			staticruntime "off"
 			systemversion "latest"
 
 		defines {"SB_PLATFORM_WINDOWS"}
 
 		filter "configurations:Debug"
 			defines "SB_DEBUG"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "SB_RELEASE"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "SB_DIST"
+			runtime "Release"
 			optimize "On"

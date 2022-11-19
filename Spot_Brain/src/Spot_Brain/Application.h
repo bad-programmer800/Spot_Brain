@@ -2,10 +2,11 @@
 
 #include "Core.h"
 
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
-
 #include "Window.h"
+#include "LayerStack.h"
+#include "Spot_Brain/Events/Event.h"
+#include "Spot_Brain/Events/ApplicationEvent.h"
+
 
 namespace Brainspace {
 	
@@ -20,11 +21,15 @@ namespace Brainspace {
 
 		void OnEvent(Event& e);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
+		LayerStack m_LayerStack;
 
 	};
 

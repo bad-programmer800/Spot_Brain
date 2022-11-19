@@ -47,6 +47,12 @@
     </ClInclude>
     <ClInclude Include="src\Spotbrain.h" />
     <ClInclude Include="src\sbpch.h" />
+    <ClInclude Include="src\Spot_Brain\Layer.h">
+      <Filter>Spot_Brain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\LayerStack.h">
+      <Filter>Spot_Brain</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -59,5 +65,11 @@
       <Filter>Spot_Brain</Filter>
     </ClCompile>
     <ClCompile Include="src\sbpch.cpp" />
+    <ClCompile Include="src\Spot_Brain\Layer.cpp">
+      <Filter>Spot_Brain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spot_Brain\LayerStack.cpp">
+      <Filter>Spot_Brain</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

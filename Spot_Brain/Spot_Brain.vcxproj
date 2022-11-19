@@ -152,6 +152,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Spot_Brain\Layer.h" />
+    <ClInclude Include="src\Spot_Brain\LayerStack.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Spot_Brain\Application.h" />
     <ClInclude Include="src\Spot_Brain\Core.h" />
@@ -166,6 +168,8 @@
     <ClInclude Include="src\sbpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Spot_Brain\Layer.cpp" />
+    <ClCompile Include="src\Spot_Brain\LayerStack.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Spot_Brain\Application.cpp" />
     <ClCompile Include="src\Spot_Brain\Log.cpp" />

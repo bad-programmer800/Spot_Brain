@@ -6,5 +6,7 @@
 #include "Spot_Brain/Layer.h"
 #include "Spot_Brain/Log.h"
 
+#include "Spot_Brain/imgui/ImGuiLayer.h"
+
 
 #include "Spot_Brain/EntryPoint.h"

@@ -26,6 +26,7 @@ class Homebrain : public Brainspace::Application
 public:
 	Homebrain() {
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Brainspace::ImGuiLayer());
 	}
 
 	~Homebrain() {
@@ -34,7 +35,7 @@ public:
 
 };
 
-
+ 
 
 Brainspace::Application* Brainspace::CreateApplication()
 {

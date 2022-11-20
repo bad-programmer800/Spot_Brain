@@ -14,8 +14,12 @@ workspace "Spot_Brain"
 	-- Include directories relative to root folder (solution directory)
 	IncludeDir = {}
 	IncludeDir["GLFW"] = "Spot_Brain/Vendor/GLFW/include"
+	IncludeDir["glad"] = "Spot_Brain/Vendor/glad/include"
+	IncludeDir["imgui"] = "Spot_Brain/Vendor/imgui"
 
 	include "Spot_Brain/Vendor/GLFW/"
+	include "Spot_Brain/Vendor/glad/"
+	include "Spot_Brain/Vendor/imgui"
 
 	project "Spot_Brain"
 		location "Spot_Brain"
@@ -36,10 +40,17 @@ workspace "Spot_Brain"
 		includedirs {
 			"%{prj.name}/src",
 			"%{prj.name}/Vendor/spdlog/include",
-			"%{IncludeDir.GLFW}"
+			"%{IncludeDir.GLFW}",
+			"%{IncludeDir.glad}",
+			"%{IncludeDir.imgui}"
 		}
 
-		links {"GLFW", "opengl32.lib"}
+		links {
+			"GLFW", 
+			"opengl32.lib", 
+			"glad",
+			"imgui"
+		}
 		
 		filter "system:windows"
 			cppdialect "C++17"
@@ -48,7 +59,8 @@ workspace "Spot_Brain"
 			
 			defines {
 				"SB_PLATFORM_WINDOWS",
-				"SB_BUILD_DLL"
+				"SB_BUILD_DLL",
+				"GLFW_INCLUDE_NONE"
 			}
 			
 		postbuildcommands {

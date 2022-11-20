@@ -17,9 +17,12 @@ workspace "Spot_Brain"
 	IncludeDir["glad"] = "Spot_Brain/Vendor/glad/include"
 	IncludeDir["imgui"] = "Spot_Brain/Vendor/imgui"
 
-	include "Spot_Brain/Vendor/GLFW/"
-	include "Spot_Brain/Vendor/glad/"
-	include "Spot_Brain/Vendor/imgui"
+	group "Dependencies"
+		include "Spot_Brain/Vendor/GLFW/"
+		include "Spot_Brain/Vendor/glad/"
+		include "Spot_Brain/Vendor/imgui"
+
+	group ""
 
 	project "Spot_Brain"
 		location "Spot_Brain"

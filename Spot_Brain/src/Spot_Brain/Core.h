@@ -10,6 +10,11 @@
 	#error Spot Brain only supports Wndows!
 #endif
 
+#ifdef SB_DEBUG
+	#define SB_ENABLE_ASSERTS
+#endif // SB_DEBUG
+
+
 #ifdef SB_ENABLE_ASSERTS
 	#define SB_ASSERT(x, ...) { if(!(x)) { SB_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();}}
 	#define SB_CORE_ASSERT(x, ...) { if(!(x)) { SB_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();}}

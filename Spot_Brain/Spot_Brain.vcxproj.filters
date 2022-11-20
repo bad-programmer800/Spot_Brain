@@ -55,6 +55,8 @@
     <ClInclude Include="src\sbpch.h" />
     <ClInclude Include="src\Spot_Brain\imgui\ImGuiLayer.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Spot_Brain\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -75,5 +77,6 @@
     <ClCompile Include="src\sbpch.cpp" />
     <ClCompile Include="src\Spot_Brain\imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

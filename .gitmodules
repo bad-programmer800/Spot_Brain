@@ -7,3 +7,9 @@
 [submodule "Spot_Brain/Vendor/imgui"]
 	path = Spot_Brain/Vendor/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "Spot-Brain/Vendor/glm"]
+	path = Spot-Brain/Vendor/glm
+	url = https://github.com/g-truc/glm
+[submodule "Spot_Brain/Vendor/glm"]
+	path = Spot_Brain/Vendor/glm
+	url = https://github.com/g-truc/glm

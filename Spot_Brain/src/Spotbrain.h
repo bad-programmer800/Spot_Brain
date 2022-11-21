@@ -6,6 +6,10 @@
 #include "Spot_Brain/Layer.h"
 #include "Spot_Brain/Log.h"
 
+#include "Spot_Brain/Input.h"
+#include "Spot_Brain/KeyCodes.h"
+#include "Spot_Brain/MouseButtonCodes.h"
+
 #include "Spot_Brain/imgui/ImGuiLayer.h"
 
 

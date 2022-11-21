@@ -4,7 +4,7 @@
 
 namespace Brainspace {
 
-	class WindowsInput : public Input
+	class BRAIN_API WindowsInput : public Input
 	{
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) override;

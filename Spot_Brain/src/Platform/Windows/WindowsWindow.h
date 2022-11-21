@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Spot_Brain/Window.h"
+#include "Spot_Brain/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
 namespace Brainspace {
-	class WindowsWindow : public Window
+	class BRAIN_API WindowsWindow : public Window
 	{
 	public:
 		// Constructor and destructor for the window class
@@ -29,6 +30,7 @@ namespace Brainspace {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

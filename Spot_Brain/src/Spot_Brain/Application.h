@@ -7,6 +7,7 @@
 #include "Spot_Brain/Events/Event.h"
 #include "Spot_Brain/Events/ApplicationEvent.h"
 
+#include "Spot_Brain/imgui/ImGuiLayer.h"
 
 namespace Brainspace {
 	
@@ -32,8 +33,11 @@ namespace Brainspace {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 
 	private:
 		static Application* s_Instance;

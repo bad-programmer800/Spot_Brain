@@ -16,18 +16,21 @@ workspace "Spot_Brain"
 	IncludeDir["GLFW"] = "Spot_Brain/Vendor/GLFW/include"
 	IncludeDir["glad"] = "Spot_Brain/Vendor/glad/include"
 	IncludeDir["imgui"] = "Spot_Brain/Vendor/imgui"
+	IncludeDir["glm"] = "Spot_Brain/Vendor/glm"
 
 	group "Dependencies"
 		include "Spot_Brain/Vendor/GLFW/"
 		include "Spot_Brain/Vendor/glad/"
-		include "Spot_Brain/Vendor/imgui"
+		include "Spot_Brain/Vendor/imgui/"
 
 	group ""
 
 	project "Spot_Brain"
 		location "Spot_Brain"
-		kind "SharedLib"
+		kind "StaticLib"
 		language "C++"
+		cppdialect "C++17"
+		staticruntime "on"
 		
 		targetdir ("bin/" ..outputdir.. "/%{prj.name}")
 		objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -37,15 +40,22 @@ workspace "Spot_Brain"
 
 		files {
 			"%{prj.name}/src/**.h",
-			"%{prj.name}/src/**.cpp"
+			"%{prj.name}/src/**.cpp",
+			"%{prj.name}/Vendor/glm/glm/**.hpp",
+			"%{prj.name}/Vendor/glm/glm/**.inl"
 		}
 		
+		defines {
+			"_CRT_SECURE_NO_WARNINGS"
+		}
+
 		includedirs {
 			"%{prj.name}/src",
 			"%{prj.name}/Vendor/spdlog/include",
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.glad}",
-			"%{IncludeDir.imgui}"
+			"%{IncludeDir.imgui}",
+			"%{IncludeDir.glm}"
 		}
 
 		links {
@@ -56,21 +66,14 @@ workspace "Spot_Brain"
 		}
 		
 		filter "system:windows"
-			cppdialect "C++17"
 			systemversion "latest"
-			staticruntime "off"
 			
 			defines {
 				"SB_PLATFORM_WINDOWS",
 				"SB_BUILD_DLL",
 				"GLFW_INCLUDE_NONE"
 			}
-			
-		postbuildcommands {
-			("{COPYFILE} %{cfg.buildtarget.abspath} ../bin/" .. outputdir .. "/The_Brain")
-		}
 
-			
 		filter "configurations:Debug"
 			defines "SB_DEBUG"
 			runtime "Debug"
@@ -92,6 +95,8 @@ workspace "Spot_Brain"
 		location "The_Brain"
 		kind "ConsoleApp"
 		language "C++"
+		cppdialect "C++17"
+		staticruntime "on"
 
 		targetdir ("bin/" ..outputdir.. "/%{prj.name}")
 		objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -103,14 +108,14 @@ workspace "Spot_Brain"
 
 		includedirs {
 			"Spot_Brain/Vendor/spdlog/include",
-			"Spot_Brain/src"
+			"Spot_Brain/src",
+			"Spot_Brain/Vendor",
+			"%{IncludeDir.glm}"
 		}
 
 		links {"Spot_Brain"}
 
 		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "off"
 			systemversion "latest"
 
 		defines {"SB_PLATFORM_WINDOWS"}

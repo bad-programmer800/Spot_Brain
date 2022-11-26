@@ -17,5 +17,4 @@ namespace Brainspace {
 	private:
 		GLFWwindow* m_WindowHandle;
 	};
-
 }

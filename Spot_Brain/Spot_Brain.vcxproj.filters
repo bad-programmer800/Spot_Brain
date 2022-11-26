@@ -1349,6 +1349,10 @@
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Shader.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Renderer.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1379,5 +1383,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
   </ItemGroup>
 </Project>

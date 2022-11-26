@@ -12,5 +12,6 @@
 
 #include "Spot_Brain/imgui/ImGuiLayer.h"
 
-
+// -- Entry Point -------------------
 #include "Spot_Brain/EntryPoint.h"
+// ----------------------------------

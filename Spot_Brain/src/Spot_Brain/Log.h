@@ -26,10 +26,10 @@ namespace Brainspace {
 #define SB_CORE_INFO(...)		::Brainspace::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define SB_CORE_WARN(...)		::Brainspace::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define SB_CORE_ERROR(...)		::Brainspace::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define SB_CORE_FATAL(...)		::Brainspace::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define SB_CORE_CRITICAL(...)	::Brainspace::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 #define SB_TRACE(...)			::Brainspace::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define SB_INFO(...)			::Brainspace::Log::GetClientLogger()->info(__VA_ARGS__)
 #define SB_WARN(...)			::Brainspace::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define SB_ERROR(...)			::Brainspace::Log::GetClientLogger()->error(__VA_ARGS__)
-#define SB_FATAL(...)			::Brainspace::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define SB_CRITICAL(...)		::Brainspace::Log::GetClientLogger()->critical(__VA_ARGS__)

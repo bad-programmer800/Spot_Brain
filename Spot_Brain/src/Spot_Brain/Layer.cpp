@@ -8,9 +8,4 @@ namespace Brainspace {
 	{
 	}
 
-	Layer::~Layer()
-	{
-	}
-
-
 }

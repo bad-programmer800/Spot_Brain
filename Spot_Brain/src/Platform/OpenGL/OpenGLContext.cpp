@@ -19,6 +19,7 @@ namespace Brainspace {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		SB_CORE_ASSERT(status, "Failed to initialize glad!");
+
 	}
 
 	void OpenGLContext::SwapBuffers()

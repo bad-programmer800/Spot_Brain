@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Spot_Brain/Core.h"
-#include <utility>
 
 namespace Brainspace {
 

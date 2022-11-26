@@ -1,9 +1,9 @@
 #include "sbpch.h"
 #include "Application.h"
+#include "Spot_Brain/Log.h"
 
 
-
-#include <glad/glad.h>
+#include "Spot_Brain/Renderer/Renderer.h"
 
 #include "Input.h"
 
@@ -116,7 +116,7 @@ namespace Brainspace {
 		)";
 
 		std::string blueShaderFragmentSrc = R"(
-			#version 330
+			#version 330 core
 
 			layout(location = 0) out vec4 color;
 
@@ -131,20 +131,14 @@ namespace Brainspace {
 		m_BlueShader.reset(new Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
-	Application::~Application() 
-	{
-	}
-
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
-		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
-		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -152,7 +146,7 @@ namespace Brainspace {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
 			if (e.Handled)
@@ -164,16 +158,19 @@ namespace Brainspace {
 	{
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			
+			RenderCommand::SetClearColor({ 1.0f, 0.0f, 1.0f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA);
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

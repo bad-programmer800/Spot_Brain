@@ -145,10 +145,12 @@
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Spot_Brain\Renderer\Buffer.h" />
     <ClInclude Include="src\Spot_Brain\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Spot_Brain\Renderer\Renderer.h" />
     <ClInclude Include="src\Spot_Brain\Renderer\Shader.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\VertexArray.h" />
     <ClInclude Include="Vendor\glm\glm\common.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_fixes.hpp" />
@@ -588,6 +590,7 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Spot_Brain\Application.cpp" />
@@ -602,6 +605,7 @@
     <ClCompile Include="src\Spot_Brain\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Spot_Brain\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Spot_Brain\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Vendor\GLFW\GLFW.vcxproj">

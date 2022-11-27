@@ -4,7 +4,7 @@
 
 namespace Brainspace {
 
-	class BRAIN_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -18,7 +18,7 @@ namespace Brainspace {
 		int m_KeyCode;
 	};
 
-	class BRAIN_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public: 
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -39,7 +39,7 @@ namespace Brainspace {
 			int m_RepeatCount;
 	};
 
-	class BRAIN_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -55,7 +55,7 @@ namespace Brainspace {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class BRAIN_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

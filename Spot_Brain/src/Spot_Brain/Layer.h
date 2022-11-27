@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Spot_Brain/Core.h"
+#include "Spot_Brain/Core/Timestep.h"
 #include "Spot_Brain/Events/Event.h"
 
 namespace Brainspace {
@@ -13,7 +14,7 @@ namespace Brainspace {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

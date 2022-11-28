@@ -1,7 +1,7 @@
 #include "sbpch.h"
 #include "RendererAPI.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	RendererAPI::API RendererAPI::s_API = RendererAPI::API::OpenGL;
 

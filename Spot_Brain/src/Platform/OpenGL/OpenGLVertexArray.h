@@ -2,7 +2,7 @@
 
 #include "Spot_Brain/Renderer/VertexArray.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class OpenGLVertexArray : public VertexArray
 	{

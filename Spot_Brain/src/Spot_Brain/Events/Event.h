@@ -3,7 +3,7 @@
 #include "sbpch.h"
 #include "Spot_Brain/Core.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	enum class EventType
 	{

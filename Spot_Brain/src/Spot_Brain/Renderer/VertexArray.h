@@ -3,7 +3,7 @@
 #include <memory>
 #include "Spot_Brain/Renderer/Buffer.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class VertexArray
 	{

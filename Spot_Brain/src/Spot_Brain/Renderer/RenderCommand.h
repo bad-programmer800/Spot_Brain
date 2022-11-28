@@ -2,7 +2,7 @@
 
 #include "RendererAPI.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class RenderCommand
 	{

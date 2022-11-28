@@ -2,7 +2,7 @@
 
 #include "Spot_Brain/Core.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class Input
 	{

@@ -5,7 +5,7 @@
 
 #include <vector>
 
-namespace Brainspace {
+namespace Brain {
 
 	class BRAIN_API LayerStack
 	{

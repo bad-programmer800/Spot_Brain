@@ -3,7 +3,7 @@
 
 #include "Platform/OpenGL/OpenGLRendererAPI.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
 

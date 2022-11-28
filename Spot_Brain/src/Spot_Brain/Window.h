@@ -5,7 +5,7 @@
 #include "Spot_Brain/Core.h"
 #include "Spot_Brain/Events/Event.h"
 
-namespace Brainspace {
+namespace Brain {
 	
 	// Window properties
 	struct WindowProps 

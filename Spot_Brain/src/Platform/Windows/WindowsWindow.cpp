@@ -8,7 +8,7 @@
 
 #include "Platform/OpenGL/OpenGLContext.h"
 
-namespace Brainspace {
+namespace Brain {
 	
 	static bool s_GLFWInitialized = false;
 

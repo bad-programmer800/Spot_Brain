@@ -2,7 +2,7 @@
 
 #include "Spot_Brain/Renderer/RendererAPI.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class OpenGLRendererAPI : public RendererAPI
 	{

@@ -4,7 +4,7 @@
 #include "Spot_Brain/Application.h"
 #include <GLFW/glfw3.h>
 
-namespace Brainspace {
+namespace Brain {
 	Input* Input::s_Instance = new WindowsInput();
 	
 	bool WindowsInput::IsKeyPressedImpl(int keycode)

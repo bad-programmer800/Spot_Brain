@@ -4,7 +4,7 @@
 #include "Spot_Brain/Core/Timestep.h"
 #include "Spot_Brain/Events/Event.h"
 
-namespace Brainspace {
+namespace Brain {
 	
 	class BRAIN_API Layer
 	{

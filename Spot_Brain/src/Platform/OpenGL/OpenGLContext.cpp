@@ -6,7 +6,7 @@
 #include <glad/glad.h>
 #include <gl/GL.h>
 
-namespace Brainspace {
+namespace Brain {
 
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
 		: m_WindowHandle(windowHandle)

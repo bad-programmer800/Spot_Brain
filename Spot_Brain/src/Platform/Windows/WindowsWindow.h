@@ -5,7 +5,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Brainspace {
+namespace Brain {
 	class BRAIN_API WindowsWindow : public Window
 	{
 	public:

@@ -11,7 +11,7 @@
 
 #include "Spot_Brain/imgui/ImGuiLayer.h"
 
-namespace Brainspace {
+namespace Brain {
 	
 	class Application
 	{

@@ -3,23 +3,23 @@
 
 #include <glad/glad.h>
 
-namespace Brainspace {
+namespace Brain {
 
 	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
 	{
 		switch (type)
 		{
-		case Brainspace::ShaderDataType::Float:		return GL_FLOAT;
-		case Brainspace::ShaderDataType::Float2:	return GL_FLOAT;
-		case Brainspace::ShaderDataType::Float3:	return GL_FLOAT;
-		case Brainspace::ShaderDataType::Float4:	return GL_FLOAT;
-		case Brainspace::ShaderDataType::Mat3:		return GL_FLOAT;
-		case Brainspace::ShaderDataType::Mat4:		return GL_FLOAT;
-		case Brainspace::ShaderDataType::Int:		return GL_INT;
-		case Brainspace::ShaderDataType::Int2:		return GL_INT;
-		case Brainspace::ShaderDataType::Int3:		return GL_INT;
-		case Brainspace::ShaderDataType::Int4:		return GL_INT;
-		case Brainspace::ShaderDataType::Bool:		return GL_BOOL;
+		case Brain::ShaderDataType::Float:		return GL_FLOAT;
+		case Brain::ShaderDataType::Float2:	return GL_FLOAT;
+		case Brain::ShaderDataType::Float3:	return GL_FLOAT;
+		case Brain::ShaderDataType::Float4:	return GL_FLOAT;
+		case Brain::ShaderDataType::Mat3:		return GL_FLOAT;
+		case Brain::ShaderDataType::Mat4:		return GL_FLOAT;
+		case Brain::ShaderDataType::Int:		return GL_INT;
+		case Brain::ShaderDataType::Int2:		return GL_INT;
+		case Brain::ShaderDataType::Int3:		return GL_INT;
+		case Brain::ShaderDataType::Int4:		return GL_INT;
+		case Brain::ShaderDataType::Bool:		return GL_BOOL;
 		}
 
 		SB_CORE_ASSERT(false, "Unknown ShaderDatatType!");

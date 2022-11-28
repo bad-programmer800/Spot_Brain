@@ -4,7 +4,7 @@
 
 struct GLFWwindow;
 
-namespace Brainspace {
+namespace Brain {
 
 	class OpenGLContext : public GraphicsContext
 	{

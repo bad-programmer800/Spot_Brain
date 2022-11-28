@@ -1,7 +1,7 @@
 #include "sbpch.h"
 #include "LayerStack.h"
 
-namespace Brainspace {
+namespace Brain {
 	
 	LayerStack::LayerStack()
 	{

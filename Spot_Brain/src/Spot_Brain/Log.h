@@ -4,7 +4,7 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 
-namespace Brainspace {
+namespace Brain {
 	class BRAIN_API Log
 	{
 	public:
@@ -22,14 +22,14 @@ namespace Brainspace {
 }
 
 // Core log macros
-#define SB_CORE_TRACE(...)		::Brainspace::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define SB_CORE_INFO(...)		::Brainspace::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define SB_CORE_WARN(...)		::Brainspace::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define SB_CORE_ERROR(...)		::Brainspace::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define SB_CORE_CRITICAL(...)	::Brainspace::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define SB_CORE_TRACE(...)		::Brain::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define SB_CORE_INFO(...)		::Brain::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define SB_CORE_WARN(...)		::Brain::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define SB_CORE_ERROR(...)		::Brain::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define SB_CORE_CRITICAL(...)	::Brain::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
-#define SB_TRACE(...)			::Brainspace::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define SB_INFO(...)			::Brainspace::Log::GetClientLogger()->info(__VA_ARGS__)
-#define SB_WARN(...)			::Brainspace::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define SB_ERROR(...)			::Brainspace::Log::GetClientLogger()->error(__VA_ARGS__)
-#define SB_CRITICAL(...)		::Brainspace::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define SB_TRACE(...)			::Brain::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define SB_INFO(...)			::Brain::Log::GetClientLogger()->info(__VA_ARGS__)
+#define SB_WARN(...)			::Brain::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define SB_ERROR(...)			::Brain::Log::GetClientLogger()->error(__VA_ARGS__)
+#define SB_CRITICAL(...)		::Brain::Log::GetClientLogger()->critical(__VA_ARGS__)

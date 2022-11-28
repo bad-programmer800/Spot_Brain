@@ -6,7 +6,7 @@
 #include "Spot_Brain/Events/KeyEvent.h"
 #include "Spot_Brain/Events/MouseEvent.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class BRAIN_API ImGuiLayer : public Layer
 	{

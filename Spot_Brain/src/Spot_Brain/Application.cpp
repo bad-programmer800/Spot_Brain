@@ -9,7 +9,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Brainspace {
+namespace Brain {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Brainspace {
+namespace Brain {
 
 	class GraphicsContext
 	{

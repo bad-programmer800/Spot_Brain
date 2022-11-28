@@ -4,7 +4,7 @@
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	VertexArray* VertexArray::Create()
 	{

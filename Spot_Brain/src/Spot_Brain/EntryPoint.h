@@ -2,16 +2,16 @@
 
 #ifdef SB_PLATFORM_WINDOWS
 
-extern Brainspace::Application* Brainspace::CreateApplication();
+extern Brain::Application* Brain::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	Brainspace::Log::Init();
+	Brain::Log::Init();
 	SB_CORE_WARN("Initialized Log!");
 	int a = 5;
 	SB_INFO("Hello! Var={0}", a);
 
-	auto app = Brainspace::CreateApplication();
+	auto app = Brain::CreateApplication();
 	app->Run();
 	delete app;
 }

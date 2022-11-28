@@ -5,7 +5,7 @@
 #include "OrthographicCamera.h"
 #include "Shader.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class Renderer
 	{

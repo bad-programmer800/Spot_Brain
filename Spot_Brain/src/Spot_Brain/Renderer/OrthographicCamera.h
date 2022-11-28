@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-namespace Brainspace {
+namespace Brain {
 
 	class OrthographicCamera
 	{

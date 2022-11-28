@@ -4,7 +4,7 @@
 
 #include "VertexArray.h"
 
-namespace Brainspace {
+namespace Brain {
 	
 	class RendererAPI
 	{

@@ -2,7 +2,7 @@
 
 #include "Event.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class KeyEvent : public Event
 	{

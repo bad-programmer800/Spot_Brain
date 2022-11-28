@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 
-namespace Brainspace {
+namespace Brain {
 
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
 	{

@@ -2,7 +2,7 @@
 
 #include "Spot_Brain/Input.h"
 
-namespace Brainspace {
+namespace Brain {
 
 	class BRAIN_API WindowsInput : public Input
 	{

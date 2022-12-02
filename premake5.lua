@@ -8,6 +8,10 @@ workspace "Spot_Brain"
 		"Release",
 		"Dist"
 	}
+
+	flags {
+		"MultiProcessorCompile"
+	}
 	
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 	
@@ -17,6 +21,7 @@ workspace "Spot_Brain"
 	IncludeDir["glad"] = "Spot_Brain/Vendor/glad/include"
 	IncludeDir["imgui"] = "Spot_Brain/Vendor/imgui"
 	IncludeDir["glm"] = "Spot_Brain/Vendor/glm"
+	IncludeDir["stb_image"] = "Spot_Brain/Vendor/stb_image"
 
 	group "Dependencies"
 		include "Spot_Brain/Vendor/GLFW/"
@@ -42,7 +47,9 @@ workspace "Spot_Brain"
 			"%{prj.name}/src/**.h",
 			"%{prj.name}/src/**.cpp",
 			"%{prj.name}/Vendor/glm/glm/**.hpp",
-			"%{prj.name}/Vendor/glm/glm/**.inl"
+			"%{prj.name}/Vendor/glm/glm/**.inl",
+			"%{prj.name}/Vendor/stb_image/**.h",
+			"%{prj.name}/Vendor/stb_image/**.cpp"
 		}
 		
 		defines {
@@ -55,7 +62,8 @@ workspace "Spot_Brain"
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.glad}",
 			"%{IncludeDir.imgui}",
-			"%{IncludeDir.glm}"
+			"%{IncludeDir.glm}",
+			"%{IncludeDir.stb_image}"
 		}
 
 		links {

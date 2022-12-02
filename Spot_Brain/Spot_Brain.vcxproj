@@ -77,10 +77,12 @@
       <PrecompiledHeaderFile>sbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SB_PLATFORM_WINDOWS;SB_BUILD_DLL;GLFW_INCLUDE_NONE;SB_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -98,13 +100,14 @@
       <PrecompiledHeaderFile>sbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SB_PLATFORM_WINDOWS;SB_BUILD_DLL;GLFW_INCLUDE_NONE;SB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -123,13 +126,14 @@
       <PrecompiledHeaderFile>sbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SB_PLATFORM_WINDOWS;SB_BUILD_DLL;GLFW_INCLUDE_NONE;SB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -143,20 +147,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Spot_Brain\Core\Timestep.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\Buffer.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\Renderer.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\Shader.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\VertexArray.h" />
     <ClInclude Include="Vendor\glm\glm\common.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_fixes.hpp" />
@@ -573,50 +563,72 @@
     <ClInclude Include="Vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="Vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="Vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="Vendor\stb_image\stb_image.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\Spot_Brain\Application.h" />
-    <ClInclude Include="src\Spot_Brain\Core.h" />
-    <ClInclude Include="src\Spot_Brain\EntryPoint.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Application.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Core.h" />
+    <ClInclude Include="src\Spot_Brain\Core\EntryPoint.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Input.h" />
+    <ClInclude Include="src\Spot_Brain\Core\KeyCodes.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Layer.h" />
+    <ClInclude Include="src\Spot_Brain\Core\LayerStack.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Log.h" />
+    <ClInclude Include="src\Spot_Brain\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Timestep.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Window.h" />
     <ClInclude Include="src\Spot_Brain\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Spot_Brain\Events\Event.h" />
     <ClInclude Include="src\Spot_Brain\Events\KeyEvent.h" />
     <ClInclude Include="src\Spot_Brain\Events\MouseEvent.h" />
-    <ClInclude Include="src\Spot_Brain\Input.h" />
-    <ClInclude Include="src\Spot_Brain\KeyCodes.h" />
-    <ClInclude Include="src\Spot_Brain\Layer.h" />
-    <ClInclude Include="src\Spot_Brain\LayerStack.h" />
-    <ClInclude Include="src\Spot_Brain\Log.h" />
-    <ClInclude Include="src\Spot_Brain\MouseButtonCodes.h" />
-    <ClInclude Include="src\Spot_Brain\Window.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Buffer.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\OrthographicCameraController.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Renderer.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Shader.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Texture.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\VertexArray.h" />
     <ClInclude Include="src\Spot_Brain\imgui\ImGuiLayer.h" />
     <ClInclude Include="src\Spotbrain.h" />
     <ClInclude Include="src\sbpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Spot_Brain\Application.cpp" />
-    <ClCompile Include="src\Spot_Brain\Layer.cpp" />
-    <ClCompile Include="src\Spot_Brain\LayerStack.cpp" />
-    <ClCompile Include="src\Spot_Brain\Log.cpp" />
+    <ClCompile Include="src\Spot_Brain\Core\Application.cpp" />
+    <ClCompile Include="src\Spot_Brain\Core\Layer.cpp" />
+    <ClCompile Include="src\Spot_Brain\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Spot_Brain\Core\Log.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Spot_Brain\imgui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Spot_Brain\imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\sbpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Spot_Brain\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Spot_Brain\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Spot_Brain\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Spot_Brain\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Spot_Brain\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Spot_Brain\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Spot_Brain\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Vendor\GLFW\GLFW.vcxproj">

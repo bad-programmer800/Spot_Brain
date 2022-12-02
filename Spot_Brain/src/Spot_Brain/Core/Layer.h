@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Spot_Brain/Core.h"
+#include "Spot_Brain/Core/Core.h"
 #include "Spot_Brain/Core/Timestep.h"
 #include "Spot_Brain/Events/Event.h"
 
 namespace Brain {
 	
-	class BRAIN_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");

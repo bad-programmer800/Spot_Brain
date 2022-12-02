@@ -11,7 +11,7 @@ class ExampleLayer : public Brain::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
 	{
 		m_VertexArray.reset(Brain::VertexArray::Create());
 
@@ -21,7 +21,7 @@ public:
 			0.0f,	0.5f,	0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Brain::VertexBuffer> vertexBuffer;
+		Brain::Ref<Brain::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Brain::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Brain::BufferLayout layout = {
 			{Brain::ShaderDataType::Float3, "a_Position"},
@@ -31,28 +31,29 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Brain::IndexBuffer> indexBuffer;
+		Brain::Ref<Brain::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Brain::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA.reset(Brain::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f,  0.0f,
-			 0.5f, -0.5f,  0.0f,
-			 0.5f,  0.5f,  0.0f,
-			-0.5f,  0.5f,  0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f,  0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f,  0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f,  0.0f, 0.0f, 1.0f
 		};
 
-		std::shared_ptr<Brain::VertexBuffer> squareVB;
+		Brain::Ref<Brain::VertexBuffer> squareVB;
 		squareVB.reset(Brain::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{Brain::ShaderDataType::Float3, "a_Position"}
+			{Brain::ShaderDataType::Float3, "a_Position"},
+			{Brain::ShaderDataType::Float2, "a_TexCoord"}
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Brain::IndexBuffer> squareIB;
+		Brain::Ref<Brain::IndexBuffer> squareIB;
 		squareIB.reset(Brain::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -91,7 +92,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Brain::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Brain::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -125,33 +126,27 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Brain::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Brain::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
+
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+
+		m_Texture = Brain::Texture2D::Create("assets/textures/Checkerboard2.png");
+		m_BrainLogoTexture = Brain::Texture2D::Create("assets/textures/BrainLogo3.png");
+
+		std::dynamic_pointer_cast<Brain::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Brain::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Brain::Timestep ts) override
 	{
-		if (Brain::Input::IsKeyPressed(SB_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (Brain::Input::IsKeyPressed(SB_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
+		// Update
+		m_CameraController.OnUpdate(ts);
 
-		if (Brain::Input::IsKeyPressed(SB_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (Brain::Input::IsKeyPressed(SB_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		if (Brain::Input::IsKeyPressed(SB_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		else if (Brain::Input::IsKeyPressed(SB_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
+		// Render
 		Brain::RenderCommand::SetClearColor({ 1.0f, 0.0f, 1.0f, 1 });
 		Brain::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Brain::Renderer::BeginScene(m_Camera);
+		Brain::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -168,7 +163,16 @@ public:
 			}
 		}
 
-		Brain::Renderer::Submit(m_Shader, m_VertexArray);
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
+		m_Texture->Bind();
+		Brain::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		m_BrainLogoTexture->Bind();
+		Brain::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+
+		// Triangle
+		// Brain::Renderer::Submit(m_Shader, m_VertexArray);
 		
 		Brain::Renderer::EndScene();
 	}
@@ -182,23 +186,21 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(Brain::Event& event) override
+	void OnEvent(Brain::Event& e) override
 	{
-		
+		m_CameraController.OnEvent(e);
 	}
 private:
-	std::shared_ptr<Brain::Shader> m_Shader;
-	std::shared_ptr<Brain::VertexArray> m_VertexArray;
-			
-	std::shared_ptr<Brain::Shader> m_FlatColorShader;
-	std::shared_ptr<Brain::VertexArray> m_SquareVA;
+	Brain::ShaderLibrary m_ShaderLibrary;
+	Brain::Ref<Brain::Shader> m_Shader;
+	Brain::Ref<Brain::VertexArray> m_VertexArray;
+	
+	Brain::Ref<Brain::Shader> m_FlatColorShader;
+	Brain::Ref<Brain::VertexArray> m_SquareVA;
 
-	Brain::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 5.0f;
+	Brain::Ref<Brain::Texture2D> m_Texture, m_BrainLogoTexture;
 
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
+	Brain::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spot_Brain/Layer.h"
+#include "Spot_Brain/Core/Layer.h"
 
 #include "Spot_Brain/Events/ApplicationEvent.h"
 #include "Spot_Brain/Events/KeyEvent.h"

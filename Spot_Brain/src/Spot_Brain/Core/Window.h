@@ -2,7 +2,7 @@
 
 #include "sbpch.h"
 
-#include "Spot_Brain/Core.h"
+#include "Spot_Brain/Core/Core.h"
 #include "Spot_Brain/Events/Event.h"
 
 namespace Brain {

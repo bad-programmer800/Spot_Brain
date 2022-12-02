@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spot_Brain/Input.h"
+#include "Spot_Brain/Core/Input.h"
 
 namespace Brain {
 

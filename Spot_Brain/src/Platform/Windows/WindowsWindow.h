@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spot_Brain/Window.h"
+#include "Spot_Brain/Core/Window.h"
 #include "Spot_Brain/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

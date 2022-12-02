@@ -8,11 +8,12 @@
 
 #include <string>
 #include <sstream>
+#include <array>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Spot_Brain/Log.h"
+#include "Spot_Brain/Core/Log.h"
 
 #ifdef SB_PLATFORM_WINDOWS
 	#include <Windows.h>

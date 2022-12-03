@@ -1,10 +1,8 @@
 #include "sbpch.h"
-#include "RenderCommand.h"
-
-#include "Platform/OpenGL/OpenGLRendererAPI.h"
+#include "Spot_Brain/Renderer/RenderCommand.h"
 
 namespace Brain {
 
-	Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<OpenGLRendererAPI>();
+	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 
 }

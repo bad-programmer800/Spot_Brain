@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Event.h"
+#include "Spot_Brain/Events/Event.h"
 
 namespace Brain {
 

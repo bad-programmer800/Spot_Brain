@@ -1,7 +1,7 @@
 #include "sbpch.h"
-#include "Shader.h"
+#include "Spot_Brain/Renderer/Shader.h"
 
-#include "Renderer.h"
+#include "Spot_Brain/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Brain {
@@ -11,7 +11,7 @@ namespace Brain {
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:	SB_CORE_ASSERT(false, "RendererAPI::None is not currently supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:	return std::make_shared<OpenGLShader>(filepath);
+			case RendererAPI::API::OpenGL:	return CreateRef<OpenGLShader>(filepath);
 		}
 
 		SB_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -23,7 +23,7 @@ namespace Brain {
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:	SB_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:	return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+			case RendererAPI::API::OpenGL:	return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		SB_CORE_ASSERT(false, "Unknown RendererAPI!");

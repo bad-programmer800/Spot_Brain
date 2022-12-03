@@ -1,13 +1,8 @@
 #include "sbpch.h"
-#include "LayerStack.h"
+#include "Spot_Brain/Core/LayerStack.h"
 
 namespace Brain {
 	
-	LayerStack::LayerStack()
-	{
-
-	}
-
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "Spot_Brain/Core/Core.h"
 
-#include "Window.h"
+#include "Spot_Brain/Core/Window.h"
 #include "Spot_Brain/Core/LayerStack.h"
 #include "Spot_Brain/Events/Event.h"
 #include "Spot_Brain/Events/ApplicationEvent.h"
@@ -17,7 +17,7 @@ namespace Brain {
 	{
 	public:
 		Application();
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void Run();
 

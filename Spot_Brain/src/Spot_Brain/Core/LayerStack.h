@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Spot_Brain/Core/Core.h"
-#include "Layer.h"
+#include "Spot_Brain/Core/Layer.h"
 
 #include <vector>
 
 namespace Brain {
 
-	class BRAIN_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Event.h"
+#include "Spot_Brain/Events/Event.h"
 
 namespace Brain {
 
-	class BRAIN_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -27,7 +27,7 @@ namespace Brain {
 		float m_MouseX, m_MouseY;
 	};
 
-	class BRAIN_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
@@ -50,7 +50,7 @@ namespace Brain {
 		float m_XOffset, m_YOffset;
 	};
 
-	class BRAIN_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -80,7 +80,7 @@ namespace Brain {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class BRAIN_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

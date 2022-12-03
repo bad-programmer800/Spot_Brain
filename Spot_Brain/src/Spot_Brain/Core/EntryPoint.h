@@ -1,4 +1,5 @@
 #pragma once
+#include "Spot_Brain/Core/Core.h"
 
 #ifdef SB_PLATFORM_WINDOWS
 

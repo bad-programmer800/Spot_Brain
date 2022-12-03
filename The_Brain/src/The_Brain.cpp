@@ -1,9 +1,7 @@
 #include <Spotbrain.h>
 #include <Spot_Brain/Core/EntryPoint.h>
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -24,8 +22,7 @@ public:
 			0.0f,	0.5f,	0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		Brain::Ref<Brain::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Brain::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Brain::Ref<Brain::VertexBuffer> vertexBuffer = Brain::VertexBuffer::Create(vertices, sizeof(vertices));
 		Brain::BufferLayout layout = {
 			{Brain::ShaderDataType::Float3, "a_Position"},
 			{Brain::ShaderDataType::Float4, "a_Color"}
@@ -34,8 +31,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Brain::Ref<Brain::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Brain::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Brain::Ref<Brain::IndexBuffer> indexBuffer = Brain::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA = Brain::VertexArray::Create();
@@ -47,8 +43,7 @@ public:
 			-0.5f,  0.5f,  0.0f, 0.0f, 1.0f
 		};
 
-		Brain::Ref<Brain::VertexBuffer> squareVB;
-		squareVB.reset(Brain::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Brain::Ref<Brain::VertexBuffer> squareVB = Brain::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{Brain::ShaderDataType::Float3, "a_Position"},
 			{Brain::ShaderDataType::Float2, "a_TexCoord"}
@@ -56,8 +51,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Brain::Ref<Brain::IndexBuffer> squareIB;
-		squareIB.reset(Brain::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Brain::Ref<Brain::IndexBuffer> squareIB = Brain::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		std::string vertexSrc = R"(
@@ -136,8 +130,8 @@ public:
 		m_Texture = Brain::Texture2D::Create("assets/textures/Checkerboard2.png");
 		m_BrainLogoTexture = Brain::Texture2D::Create("assets/textures/BrainLogo3.png");
 
-		std::dynamic_pointer_cast<Brain::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<Brain::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		textureShader->SetInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Brain::Timestep ts) override
@@ -153,8 +147,8 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		std::dynamic_pointer_cast<Brain::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<Brain::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 		
 		for (int y = 0; y < 20; y++)
 		{

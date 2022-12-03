@@ -1,7 +1,7 @@
 #include "sbpch.h"
-#include "Texture.h"
+#include "Spot_Brain/Renderer/Texture.h"
 
-#include "Renderer.h"
+#include "Spot_Brain/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Brain {

@@ -1,9 +1,9 @@
 #include "sbpch.h"
-#include "ImGuiLayer.h"
+#include "Spot_Brain/imgui/ImGuiLayer.h"
 
-#include "imgui.h"
-#include "backends/imgui_impl_glfw.h"
-#include "backends/imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
 
 #include "Spot_Brain/Core/Application.h"
 

@@ -1492,5 +1492,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Spot_Brain\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\GraphicsContext.cpp" />
   </ItemGroup>
 </Project>

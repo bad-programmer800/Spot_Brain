@@ -1,8 +1,8 @@
 #pragma once
 
-#include "OrthographicCamera.h"
+#include "Spot_Brain/Renderer/OrthographicCamera.h"
 
-#include "Texture.h"
+#include "Spot_Brain/Renderer/Texture.h"
 
 namespace Brain {
 	class Renderer2D

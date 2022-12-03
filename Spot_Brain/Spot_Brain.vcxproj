@@ -147,6 +147,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Spot_Brain\Renderer\Renderer2D.h" />
     <ClInclude Include="Vendor\glm\glm\common.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_fixes.hpp" />
@@ -602,6 +603,7 @@
     <ClInclude Include="src\sbpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Spot_Brain\Renderer\Renderer2D.cpp" />
     <ClCompile Include="Vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />

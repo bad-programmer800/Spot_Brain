@@ -1,4 +1,5 @@
 #include <Spotbrain.h>
+#include <Spot_Brain/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -7,13 +8,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public Brain::Layer
 {
 public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
 	{
-		m_VertexArray.reset(Brain::VertexArray::Create());
+		m_VertexArray = Brain::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f,	-0.5f,	0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -35,7 +38,7 @@ public:
 		indexBuffer.reset(Brain::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(Brain::VertexArray::Create());
+		m_SquareVA = Brain::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f,  0.0f, 0.0f, 0.0f,
@@ -206,13 +209,12 @@ private:
 
 };
 
-
 class Homebrain : public Brain::Application
 {
 public:
 	Homebrain() {
-		PushLayer(new ExampleLayer());
-		
+		// PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Homebrain() {

@@ -72,17 +72,19 @@ namespace Brain {
 		std::unordered_map<GLenum, std::string> shaderSources;
 		const char* typeToken = "#type";
 		size_t typeTokenLength = strlen(typeToken);
-		size_t pos = source.find(typeToken, 0);
+		size_t pos = source.find(typeToken, 0); //Start of shader type declaration line
 		while (pos != std::string::npos)
 		{
-			size_t eol = source.find_first_of("\r\n", pos);
+			size_t eol = source.find_first_of("\r\n", pos); //End shader type declaration
 			SB_CORE_ASSERT(eol != std::string::npos, "Syntax Error!");
-			size_t begin = pos + typeTokenLength + 1;
+			size_t begin = pos + typeTokenLength + 1;//Start of shader type name after "#type" keyword
 			std::string type = source.substr(begin, eol - begin);
 			SB_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified!");
 
-			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
-			pos = source.find(typeToken, nextLinePos);
+			size_t nextLinePos = source.find_first_not_of("\r\n", eol);// Start of shader code
+			SB_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error!");
+			pos = source.find(typeToken, nextLinePos); //Start of next shader type declaration
+
 			shaderSources[ShaderTypeFromString(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
 		}
 		return shaderSources;
@@ -153,7 +155,10 @@ namespace Brain {
 		}
 
 		for (auto id : glShaderIDs)
+		{
 			glDetachShader(program, id);
+			glDeleteShader(id);
+		}
 	}
 
 	void OpenGLShader::Bind() const
@@ -164,6 +169,26 @@ namespace Brain {
 	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	void OpenGLShader::SetInt(const std::string& name, int value)
+	{
+		UploadUniformInt(name, value);
+	}
+
+	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
+	{
+		UploadUniformFloat3(name, value);
+	}
+
+	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
+	{
+		UploadUniformFloat4(name, value);
+	}
+	
+	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
+	{
+		UploadUniformMat4(name, value);
 	}
 
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)

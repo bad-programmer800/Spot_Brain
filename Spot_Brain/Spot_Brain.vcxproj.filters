@@ -1413,6 +1413,7 @@
     <ClInclude Include="src\sbpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">
@@ -1490,5 +1491,6 @@
     <ClCompile Include="src\sbpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

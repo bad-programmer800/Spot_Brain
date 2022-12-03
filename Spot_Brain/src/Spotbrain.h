@@ -17,6 +17,7 @@
 
 // -- Renderer-----------------------
 #include "Spot_Brain/Renderer/Renderer.h"
+#include "Spot_Brain/Renderer/Renderer2D.h"
 #include "Spot_Brain/Renderer/RenderCommand.h"
 
 #include "Spot_Brain/Renderer/Buffer.h"
@@ -28,5 +29,5 @@
 // ----------------------------------
 
 // -- Entry Point -------------------
-#include "Spot_Brain/Core/EntryPoint.h"
+// (commit 101719) #include "Spot_Brain/Core/EntryPoint.h"
 // ----------------------------------

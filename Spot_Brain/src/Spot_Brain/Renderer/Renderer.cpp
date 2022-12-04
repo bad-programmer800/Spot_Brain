@@ -8,6 +8,8 @@ namespace Brain {
 
 	void Renderer::Init()
 	{
+		SB_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

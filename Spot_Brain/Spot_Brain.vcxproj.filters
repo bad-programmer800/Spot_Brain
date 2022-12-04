@@ -1414,6 +1414,7 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Spot_Brain\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">

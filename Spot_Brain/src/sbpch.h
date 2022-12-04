@@ -15,6 +15,8 @@
 
 #include "Spot_Brain/Core/Log.h"
 
+#include "Spot_Brain/Debug/Instrumentor.h"
+
 #ifdef SB_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

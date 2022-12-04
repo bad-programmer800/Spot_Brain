@@ -12,17 +12,11 @@
 
 namespace Brain {
 	
-	static uint32_t s_GLFWWindowCount = 0;
+	static uint8_t s_GLFWWindowCount = 0;
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
 		SB_CORE_ERROR("GLFW error ({0}): {1}", error, description);
-	}
-
-	// Create() method definition
-	Scope<Window> Window::Create(const WindowProps& props)
-	{
-		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)

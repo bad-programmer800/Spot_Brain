@@ -43,6 +43,9 @@
     <Filter Include="src\Spot_Brain\Core">
       <UniqueIdentifier>{65C27AAB-D123-58B9-5A91-9E6BC6F18E78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Spot_Brain\Debug">
+      <UniqueIdentifier>{236ADF1A-0FF9-68E4-B817-7DDFA485798A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Spot_Brain\Events">
       <UniqueIdentifier>{3101577A-9D6D-1275-6661-AAD2D28C34DD}</UniqueIdentifier>
     </Filter>
@@ -1353,7 +1356,7 @@
     <ClInclude Include="src\Spot_Brain\Core\Log.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spot_Brain\Core\MouseButtonCodes.h">
+    <ClInclude Include="src\Spot_Brain\Core\MouseCodes.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Core\Timestep.h">
@@ -1361,6 +1364,9 @@
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Core\Window.h">
       <Filter>src\Spot_Brain\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Debug\Instrumentor.h">
+      <Filter>src\Spot_Brain\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Events\ApplicationEvent.h">
       <Filter>src\Spot_Brain\Events</Filter>
@@ -1392,6 +1398,9 @@
     <ClInclude Include="src\Spot_Brain\Renderer\Renderer.h">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Renderer\Renderer2D.h">
+      <Filter>src\Spot_Brain\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spot_Brain\Renderer\RendererAPI.h">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClInclude>
@@ -1413,8 +1422,6 @@
     <ClInclude Include="src\sbpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spot_Brain\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Spot_Brain\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">
@@ -1459,6 +1466,9 @@
     <ClCompile Include="src\Spot_Brain\Renderer\Buffer.cpp">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Renderer\GraphicsContext.cpp">
+      <Filter>src\Spot_Brain\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Spot_Brain\Renderer\OrthographicCamera.cpp">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClCompile>
@@ -1469,6 +1479,9 @@
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Spot_Brain\Renderer\Renderer.cpp">
+      <Filter>src\Spot_Brain\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Renderer\Renderer2D.cpp">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Spot_Brain\Renderer\RendererAPI.cpp">
@@ -1492,7 +1505,5 @@
     <ClCompile Include="src\sbpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spot_Brain\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Spot_Brain\Renderer\GraphicsContext.cpp" />
   </ItemGroup>
 </Project>

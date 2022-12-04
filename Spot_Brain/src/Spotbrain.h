@@ -10,7 +10,7 @@
 
 #include "Spot_Brain/Core/Input.h"
 #include "Spot_Brain/Core/KeyCodes.h"
-#include "Spot_Brain/Core/MouseButtonCodes.h"
+#include "Spot_Brain/Core/MouseCodes.h"
 #include "Spot_Brain/Renderer/OrthographicCameraController.h"
 
 #include "Spot_Brain/imgui/ImGuiLayer.h"

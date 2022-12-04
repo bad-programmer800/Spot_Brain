@@ -1,5 +1,5 @@
 workspace "Spot_Brain"
-	architecture "x64"
+	architecture "x86_64"
 	startproject "The_Brain"
 	
 	

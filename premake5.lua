@@ -53,7 +53,9 @@ workspace "Spot_Brain"
 		}
 		
 		defines {
-			"_CRT_SECURE_NO_WARNINGS"
+			"SB_PLATFORM_WINDOWS",	
+			"_CRT_SECURE_NO_WARNINGS",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		includedirs {
@@ -77,9 +79,7 @@ workspace "Spot_Brain"
 			systemversion "latest"
 			
 			defines {
-				"SB_PLATFORM_WINDOWS",
-				"SB_BUILD_DLL",
-				"GLFW_INCLUDE_NONE"
+				"SB_PLATFORM_WINDOWS"
 			}
 
 		filter "configurations:Debug"

@@ -17,13 +17,23 @@
 #endif
 
 #ifdef SB_DEBUG
-	#define SB_ENABLE_ASSERTS
+	#if defined(SB_PLATFORM_WINDOWS)
+		#define SB_DEBUGBREAK() __debugbreak()
+	#elif defined(SB_PLATFORM_LINUX)
+		#include <signal.h>
+		#define SB_DEBUGBREAK() raise(SIGTRAP)
+	#else
+		#error "Platform doesn't support debugbreak yet!'"
+	#endif // Platform
+		#define SB_ENABLE_ASSERTS
+#else
+	#define SB_DEBUGBREAK()
 #endif // SB_DEBUG
 
 
 #ifdef SB_ENABLE_ASSERTS
-	#define SB_ASSERT(x, ...) { if(!(x)) { SB_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();}}
-	#define SB_CORE_ASSERT(x, ...) { if(!(x)) { SB_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();}}
+	#define SB_ASSERT(x, ...) { if(!(x)) { SB_ERROR("Assertion Failed: {0}", __VA_ARGS__); SB_DEBUGBREAK();}}
+	#define SB_CORE_ASSERT(x, ...) { if(!(x)) { SB_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); SB_DEBUGBREAK();}}
 #else
 	#define SB_ASSERT(x, ...)
 	#define SB_CORE_ASSERT(x, ...)

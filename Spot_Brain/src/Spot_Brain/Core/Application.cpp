@@ -52,6 +52,11 @@ Application* Application::s_Instance = nullptr;
 		layer->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		SB_PROFILE_FUNCTION();

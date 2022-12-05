@@ -2,7 +2,7 @@
 
 #include "Spot_Brain/Core/Core.h"
 #include "Spot_Brain/Core/KeyCodes.h"
-#include "Spot_Brain/Core/MouseCodes.h""
+#include "Spot_Brain/Core/MouseCodes.h"
 
 namespace Brain {
 

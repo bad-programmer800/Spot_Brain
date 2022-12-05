@@ -158,7 +158,7 @@ namespace Brain {
 }
 
 
-#define SB_PROFILE 1
+#define SB_PROFILE 0
 #if SB_PROFILE
 	#define SB_PROFILE_BEGIN_SESSION(name, filepath) ::Brain::Instrumentor::Get().BeginSession(name, filepath)
 	#define SB_PROFILE_END_SESSION() ::Brain::Instrumentor::Get().EndSession()

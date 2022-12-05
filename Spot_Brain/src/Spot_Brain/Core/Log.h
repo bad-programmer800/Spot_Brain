@@ -11,8 +11,8 @@ namespace Brain {
 	public:
 		static void Init(); // Static means their is only one instance.
 
-		inline static Ref<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-		inline static Ref<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+		static Ref<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+		static Ref<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 	// Look up inline meaning!!
 		// What is a shared pointer?
 	private:

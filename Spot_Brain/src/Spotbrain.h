@@ -22,6 +22,7 @@
 
 #include "Spot_Brain/Renderer/Buffer.h"
 #include "Spot_Brain/Renderer/Shader.h"
+#include "Spot_Brain/Renderer/FrameBuffer.h"
 #include "Spot_Brain/Renderer/Texture.h"
 #include "Spot_Brain/Renderer/VertexArray.h"
 

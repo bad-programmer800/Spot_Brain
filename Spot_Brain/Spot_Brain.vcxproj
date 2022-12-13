@@ -58,18 +58,24 @@
     <IntDir>..\bin-int\Debug-windows-x86_64\Spot_Brain\</IntDir>
     <TargetName>Spot_Brain</TargetName>
     <TargetExt>.lib</TargetExt>
+    <ExternalIncludePath>C:\opencv\opencv\build\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
+    <LibraryPath>C:\opencv\opencv\build\x64\vc15\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\bin\Release-windows-x86_64\Spot_Brain\</OutDir>
     <IntDir>..\bin-int\Release-windows-x86_64\Spot_Brain\</IntDir>
     <TargetName>Spot_Brain</TargetName>
     <TargetExt>.lib</TargetExt>
+    <ExternalIncludePath>C:\opencv\opencv\build\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
+    <LibraryPath>C:\opencv\opencv\build\x64\vc15\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <OutDir>..\bin\Dist-windows-x86_64\Spot_Brain\</OutDir>
     <IntDir>..\bin-int\Dist-windows-x86_64\Spot_Brain\</IntDir>
     <TargetName>Spot_Brain</TargetName>
     <TargetExt>.lib</TargetExt>
+    <ExternalIncludePath>C:\opencv\opencv\build\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
+    <LibraryPath>C:\opencv\opencv\build\x64\vc15\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -91,7 +97,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world460d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -117,7 +123,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world460.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -143,10 +149,12 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world460.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\FrameBuffer.h" />
     <ClInclude Include="Vendor\glm\glm\common.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_fixes.hpp" />
@@ -604,6 +612,8 @@
     <ClInclude Include="src\sbpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="Vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />

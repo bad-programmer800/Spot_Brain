@@ -16,6 +16,11 @@ void Sandbox2D::OnAttach()
 	SB_PROFILE_FUNCTION();
 
 	m_CheckerboardTexture = Brain::Texture2D::Create("assets/textures/Checkerboard2.png");
+
+	Brain::FrameBufferSpecification fbspec;
+	fbspec.Width = 1280;
+	fbspec.Height = 720;
+	m_FrameBuffer = Brain::FrameBuffer::Create(fbspec);
 }
 
 void Sandbox2D::OnDetach()
@@ -34,6 +39,7 @@ void Sandbox2D::OnUpdate(Brain::Timestep ts)
 	Brain::Renderer2D::ResetStats();
 	{
 		SB_PROFILE_SCOPE("Renderer Prep");
+		m_FrameBuffer->Bind();
 		Brain::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Brain::RenderCommand::Clear();
 	}
@@ -62,6 +68,7 @@ void Sandbox2D::OnUpdate(Brain::Timestep ts)
 			}
 		}
 		Brain::Renderer2D::EndScene();
+		m_FrameBuffer->Unbind();
 
 
 	}
@@ -132,8 +139,17 @@ void Sandbox2D::OnImGuiRender()
 
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
-		uint32_t textureID = m_CheckerboardTexture->GetRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 256.0f, 256.0f });
+		ImGui::End();
+
+		ImGui::Begin("Image Viewer");
+		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
+		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 });
+		ImGui::End();
+
+		ImGui::Begin("Controls");
+		ImGui::End();
+
+		ImGui::Begin("Zoom");
 		ImGui::End();
 
 		ImGui::End();
@@ -152,7 +168,7 @@ void Sandbox2D::OnImGuiRender()
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 		
 		uint32_t textureID = m_CheckerboardTexture->GetRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 256.0f, 256.0f });
+		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 });
 		ImGui::End();
 	}
  }

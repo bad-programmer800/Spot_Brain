@@ -23,6 +23,7 @@ workspace "Spot_Brain"
 	IncludeDir["glm"] = "Spot_Brain/Vendor/glm"
 	IncludeDir["stb_image"] = "Spot_Brain/Vendor/stb_image"
 
+
 	group "Dependencies"
 		include "Spot_Brain/Vendor/GLFW/"
 		include "Spot_Brain/Vendor/glad/"

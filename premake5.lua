@@ -30,6 +30,7 @@ workspace "Spot_Brain"
 		include "Spot_Brain/Vendor/imgui/"
 
 	group ""
+	
 
 	project "Spot_Brain"
 		location "Spot_Brain"
@@ -68,6 +69,10 @@ workspace "Spot_Brain"
 			"%{IncludeDir.glm}",
 			"%{IncludeDir.stb_image}"
 		}
+
+		externalincludedirs {"C:/opencv/opencv/build/include"}
+
+		libdirs {"C:/opencv/opencv/build/x64/vc15/lib"}
 
 		links {
 			"GLFW", 
@@ -122,7 +127,65 @@ workspace "Spot_Brain"
 			"%{IncludeDir.glm}"
 		}
 
-		links {"Spot_Brain"}
+		externalincludedirs {"C:/opencv/opencv/build/include"}
+
+		libdirs {"C:/opencv/opencv/build/x64/vc15/lib"}
+
+		links {
+			"Spot_Brain",
+			"opencv_world460d.lib"
+		}
+
+		filter "system:windows"
+			systemversion "latest"
+
+		defines {"SB_PLATFORM_WINDOWS"}
+
+		filter "configurations:Debug"
+			defines "SB_DEBUG"
+			runtime "Debug"
+			symbols "On"
+
+		filter "configurations:Release"
+			defines "SB_RELEASE"
+			runtime "Release"
+			optimize "On"
+
+		filter "configurations:Dist"
+			defines "SB_DIST"
+			runtime "Release"
+			optimize "On"
+			
+	project "Brain_Editor"
+		location "Brain_Editor"
+		kind "ConsoleApp"
+		language "C++"
+		cppdialect "C++17"
+		staticruntime "on"
+
+		targetdir ("bin/" ..outputdir.. "/%{prj.name}")
+		objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
+
+		files {
+			"%{prj.name}/src/**.h",
+			"%{prj.name}/src/**.cpp"
+		}
+
+		includedirs {
+			"Spot_Brain/Vendor/spdlog/include",
+			"Spot_Brain/src",
+			"Spot_Brain/Vendor",
+			"%{IncludeDir.glm}"
+		}
+
+		externalincludedirs {"C:/opencv/opencv/build/include"}
+
+		libdirs {"C:/opencv/opencv/build/x64/vc15/lib"}
+
+		links {
+			"Spot_Brain",
+			"opencv_world460d.lib"
+		}
 
 		filter "system:windows"
 			systemversion "latest"

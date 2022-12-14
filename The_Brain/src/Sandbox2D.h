@@ -20,7 +20,6 @@ private:
 	// Temp
 	Brain::Ref<Brain::VertexArray> m_SquareVA;
 	Brain::Ref<Brain::Shader> m_FlatColorShader;
-	Brain::Ref<Brain::FrameBuffer> m_FrameBuffer;
 
 	Brain::Ref<Brain::Texture2D> m_CheckerboardTexture;
 

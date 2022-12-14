@@ -18,7 +18,7 @@ namespace Brain {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Spot_Brain");
 		virtual ~Application();
 
 		void OnEvent(Event& e);

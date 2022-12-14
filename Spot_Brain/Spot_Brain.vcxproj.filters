@@ -1314,6 +1314,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -1325,9 +1328,6 @@
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
@@ -1383,6 +1383,9 @@
     <ClInclude Include="src\Spot_Brain\Renderer\Buffer.h">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Renderer\FrameBuffer.h">
+      <Filter>src\Spot_Brain\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spot_Brain\Renderer\GraphicsContext.h">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClInclude>
@@ -1422,8 +1425,6 @@
     <ClInclude Include="src\sbpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spot_Brain\Renderer\FrameBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">
@@ -1433,6 +1434,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1456,9 +1460,6 @@
     <ClCompile Include="src\Spot_Brain\Core\Application.cpp">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spot_Brain\Core\Input.cpp">
-      <Filter>src\Spot_Brain\Core</Filter>
-    </ClCompile>
     <ClCompile Include="src\Spot_Brain\Core\Layer.cpp">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClCompile>
@@ -1472,6 +1473,9 @@
       <Filter>src\Spot_Brain\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Spot_Brain\Renderer\Buffer.cpp">
+      <Filter>src\Spot_Brain\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Renderer\FrameBuffer.cpp">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Spot_Brain\Renderer\GraphicsContext.cpp">
@@ -1513,7 +1517,5 @@
     <ClCompile Include="src\sbpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spot_Brain\Renderer\FrameBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp" />
   </ItemGroup>
 </Project>

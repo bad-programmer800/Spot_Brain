@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	app->Run();
 	SB_PROFILE_END_SESSION();
 
-	SB_PROFILE_BEGIN_SESSION("Startup", "BrainProfile-Shutdown.json");
+	SB_PROFILE_BEGIN_SESSION("Shutdown", "BrainProfile-Shutdown.json");
 	delete app;
 	SB_PROFILE_END_SESSION();
 }

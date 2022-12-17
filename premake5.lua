@@ -22,6 +22,7 @@ workspace "Spot_Brain"
 	IncludeDir["imgui"] = "Spot_Brain/Vendor/imgui"
 	IncludeDir["glm"] = "Spot_Brain/Vendor/glm"
 	IncludeDir["stb_image"] = "Spot_Brain/Vendor/stb_image"
+	IncludeDir["entt"] = "Spot_Brain/Vendor/entt/include"
 
 
 	group "Dependencies"
@@ -67,7 +68,8 @@ workspace "Spot_Brain"
 			"%{IncludeDir.glad}",
 			"%{IncludeDir.imgui}",
 			"%{IncludeDir.glm}",
-			"%{IncludeDir.stb_image}"
+			"%{IncludeDir.stb_image}",
+			"%{IncludeDir.entt}"
 		}
 
 		externalincludedirs {"C:/opencv/opencv/build/include"}
@@ -124,7 +126,8 @@ workspace "Spot_Brain"
 			"Spot_Brain/Vendor/spdlog/include",
 			"Spot_Brain/src",
 			"Spot_Brain/Vendor",
-			"%{IncludeDir.glm}"
+			"%{IncludeDir.glm}",
+			"%{IncludeDir.entt}"
 		}
 
 		externalincludedirs {"C:/opencv/opencv/build/include"}
@@ -175,7 +178,8 @@ workspace "Spot_Brain"
 			"Spot_Brain/Vendor/spdlog/include",
 			"Spot_Brain/src",
 			"Spot_Brain/Vendor",
-			"%{IncludeDir.glm}"
+			"%{IncludeDir.glm}",
+			"%{IncludeDir.entt}"
 		}
 
 		externalincludedirs {"C:/opencv/opencv/build/include"}

@@ -1,6 +1,6 @@
 #pragma once
 // For use by Spot Brain Applications.
-
+#include "Spot_Brain/Core/Core.h"
 
 #include "Spot_Brain/Core/Application.h"
 #include "Spot_Brain/Core/Layer.h"
@@ -14,6 +14,10 @@
 #include "Spot_Brain/Renderer/OrthographicCameraController.h"
 
 #include "Spot_Brain/imgui/ImGuiLayer.h"
+
+#include "Spot_Brain/Scene/Scene.h"
+#include "Spot_Brain/Scene/Entity.h"
+#include "Spot_Brain/Scene/Components.h"
 
 // -- Renderer-----------------------
 #include "Spot_Brain/Renderer/Renderer.h"

@@ -17,12 +17,27 @@ namespace Brain {
 	{
 		SB_PROFILE_FUNCTION();
 
-		m_CheckerboardTexture = Brain::Texture2D::Create("assets/textures/Checkerboard2.png");
+		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard2.png");
 
-		Brain::FrameBufferSpecification fbspec;
+		FrameBufferSpecification fbspec;
 		fbspec.Width = 1280;
 		fbspec.Height = 720;
-		m_FrameBuffer = Brain::FrameBuffer::Create(fbspec);
+		m_FrameBuffer = FrameBuffer::Create(fbspec);
+
+		m_ActiveScene = CreateRef<Scene>();
+
+		// Entity
+		auto square = m_ActiveScene->CreateEntity("Green Square");
+		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.0f, 1.0f, 0.0f, 1.0f });
+
+		m_SquareEntity = square;
+
+		m_CameraEntity = m_ActiveScene->CreateEntity("Camera Entity");
+		m_CameraEntity.AddComponent<CameraComponent>();
+
+		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
+		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
+		cc.Primary = false;
 	}
 
 	void EditorLayer::OnDetach()
@@ -30,17 +45,19 @@ namespace Brain {
 		SB_PROFILE_FUNCTION();
 	}
 
-	void EditorLayer::OnUpdate(Brain::Timestep ts)
+	void EditorLayer::OnUpdate(Timestep ts)
 	{
 		SB_PROFILE_FUNCTION();
 
 		// Resize
-		if (Brain::FrameBufferSpecification spec = m_FrameBuffer->GetSpecification();
+		if (FrameBufferSpecification spec = m_FrameBuffer->GetSpecification();
 			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
 			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
 			m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
 		// Update
@@ -48,42 +65,15 @@ namespace Brain {
 			m_CameraController.OnUpdate(ts);
 
 		//Render
-		Brain::Renderer2D::ResetStats();
-		{
-			SB_PROFILE_SCOPE("Renderer Prep");
-			m_FrameBuffer->Bind();
-			Brain::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			Brain::RenderCommand::Clear();
-		}
+		Renderer2D::ResetStats();
+		m_FrameBuffer->Bind();
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		RenderCommand::Clear();
 
-		{
-			static float rotation = 0.0f;
-			rotation += ts * 50.f;
+		// Update scene
+		m_ActiveScene->OnUpdate(ts);
 
-			SB_PROFILE_SCOPE("Renderer Draw");
-			Brain::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			Brain::Renderer2D::DrawRotatedQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
-			Brain::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
-			Brain::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { m_SquareColor });
-			// Brain::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture, 10.0f);
-			Brain::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f,20.0f }, m_CheckerboardTexture, 10.0f);
-			Brain::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f,1.0f }, rotation, m_CheckerboardTexture, 20.0f);
-			Brain::Renderer2D::EndScene();
-
-			Brain::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			for (float y = -5.0f; y < 5.0f; y += 0.5f)
-			{
-				for (float x = -5.0f; x < 5.0f; x += 0.5f)
-				{
-					glm::vec4 color{ (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-					Brain::Renderer2D::DrawQuad({ x,y }, { 0.45f, 0.45f }, color);
-				}
-			}
-			Brain::Renderer2D::EndScene();
-			m_FrameBuffer->Unbind();
-
-
-		}
+		m_FrameBuffer->Unbind();
 	}
 
 	void EditorLayer::OnImGuiRender()
@@ -91,7 +81,6 @@ namespace Brain {
 		SB_PROFILE_FUNCTION();
 
 		// Note: Switch this to true to enable ImGui dockspace
-
 			static bool dockspaceOpen = true;
 			static bool opt_fullscreen_persistant = true;
 			bool opt_fullscreen = opt_fullscreen_persistant;
@@ -140,14 +129,39 @@ namespace Brain {
 
 			ImGui::Begin("Settings");
 
-			auto stats = Brain::Renderer2D::GetStats();
+			auto stats = Renderer2D::GetStats();
 			ImGui::Text("Renderer2D Stats:");
 			ImGui::Text("Draw Calls: %d", stats.DrawCalls);
 			ImGui::Text("Quads: %d", stats.QuadCount);
 			ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 			ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-			ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+			if (m_SquareEntity)
+			{
+				ImGui::Separator();
+				auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
+				ImGui::Text("%s", tag.c_str());
+
+				auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+				ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+				ImGui::Separator();
+			}
+
+			ImGui::DragFloat3("Camera Transform",
+				glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().Transform[3]));
+
+			if (ImGui::Checkbox("Camera A", &m_PrimaryCamera))
+			{
+				m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
+				m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
+			}
+
+			{
+				auto& camera = m_SecondCamera.GetComponent<CameraComponent>().Camera;
+				float orthoSize = camera.GetOrthographicSize();
+				if (ImGui::DragFloat("Second Camera Ortho Size", &orthoSize))
+					camera.SetOrthographicSize(orthoSize);
+			}
 
 			ImGui::End();
 
@@ -167,13 +181,12 @@ namespace Brain {
 			ImGui::End();
 			ImGui::PopStyleVar();
 
-			/* ImGui::Begin("Zoom");
-				ImGui::Image((void*)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2{ 0,1 }, ImVec2{ 1,0 });
+			ImGui::Begin("Zoom");
 			ImGui::End();
 
 			ImGui::Begin("Controls");
 				ImGui::Button("Zoom", { 100, 100 });
-			ImGui::End(); */
+			ImGui::End();
 
 			ImGui::End();
 	}

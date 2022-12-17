@@ -1425,6 +1425,11 @@
     <ClInclude Include="src\sbpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Scene\Scene.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\Components.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\Entity.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\Camera.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\SceneCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">
@@ -1517,5 +1522,8 @@
     <ClCompile Include="src\sbpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Scene\Scene.cpp" />
+    <ClCompile Include="src\Spot_Brain\Scene\Entity.cpp" />
+    <ClCompile Include="src\Spot_Brain\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

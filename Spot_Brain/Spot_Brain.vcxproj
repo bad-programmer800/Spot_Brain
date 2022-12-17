@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>sbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;SB_PLATFORM_WINDOWS;SB_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;Vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -104,7 +104,7 @@
       <PrecompiledHeaderFile>sbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;SB_PLATFORM_WINDOWS;SB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;Vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -131,7 +131,7 @@
       <PrecompiledHeaderFile>sbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;SB_PLATFORM_WINDOWS;SB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Vendor\spdlog\include;Vendor\GLFW\include;Vendor\glad\include;Vendor\imgui;Vendor\glm;Vendor\stb_image;Vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -153,6 +153,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Spot_Brain\Renderer\Camera.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\Components.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\Entity.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\Scene.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\SceneCamera.h" />
     <ClInclude Include="Vendor\glm\glm\common.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_fixes.hpp" />
@@ -611,6 +616,9 @@
     <ClInclude Include="src\sbpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Spot_Brain\Scene\Entity.cpp" />
+    <ClCompile Include="src\Spot_Brain\Scene\Scene.cpp" />
+    <ClCompile Include="src\Spot_Brain\Scene\SceneCamera.cpp" />
     <ClCompile Include="Vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />

@@ -1,5 +1,14 @@
 #pragma once
 
+#include "Spot_Brain/Core/PlatformDetection.h"
+
+#ifdef SB_PLATFORM_WINDOWS
+	#ifndef NOMINMAX
+		#define NOMINMAX
+	#endif
+#endif
+
+
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -12,6 +21,8 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+
+#include "Spot_Brain/Core/Base.h"
 
 #include "Spot_Brain/Core/Log.h"
 

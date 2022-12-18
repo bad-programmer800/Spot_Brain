@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spot_Brain/Core/Core.h"
+#include "Spot_Brain/Core/Base.h"
 #include "Spot_Brain/Core/Layer.h"
 
 #include <vector>

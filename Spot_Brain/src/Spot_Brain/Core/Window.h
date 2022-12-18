@@ -1,8 +1,8 @@
 #pragma once
 
-#include "sbpch.h"
+#include <sstream>
 
-#include "Spot_Brain/Core/Core.h"
+#include "Spot_Brain/Core/Base.h"
 #include "Spot_Brain/Events/Event.h"
 
 namespace Brain {

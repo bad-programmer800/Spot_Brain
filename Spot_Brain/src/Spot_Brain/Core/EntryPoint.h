@@ -1,5 +1,5 @@
 #pragma once
-#include "Spot_Brain/Core/Core.h"
+#include "Spot_Brain/Core/Base.h"
 
 #ifdef SB_PLATFORM_WINDOWS
 

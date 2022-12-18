@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Spot_Brain/Core/Core.h"
+#include "Spot_Brain/Core/Base.h"
 
 namespace Brain {
 

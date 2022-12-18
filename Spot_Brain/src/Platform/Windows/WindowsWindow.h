@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 
 namespace Brain {
-	class BRAIN_API WindowsWindow : public Window
+	class WindowsWindow : public Window
 	{
 	public:
 		// Constructor and destructor for the window class

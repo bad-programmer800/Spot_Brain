@@ -1,6 +1,6 @@
 #pragma once
 // For use by Spot Brain Applications.
-#include "Spot_Brain/Core/Core.h"
+#include "Spot_Brain/Core/Base.h"
 
 #include "Spot_Brain/Core/Application.h"
 #include "Spot_Brain/Core/Layer.h"
@@ -17,6 +17,7 @@
 
 #include "Spot_Brain/Scene/Scene.h"
 #include "Spot_Brain/Scene/Entity.h"
+#include "Spot_Brain/Scene/ScriptableEntity.h"
 #include "Spot_Brain/Scene/Components.h"
 
 // -- Renderer-----------------------

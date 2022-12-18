@@ -2,19 +2,7 @@
 
 #include <memory>
 
-#ifdef SB_PLATFORM_WINDOWS
-#if SB_DYNAMIC_LINK
-	#ifdef SB_BUILD_DLL
-		#define BRAIN_API __declspec(dllexport)
-	#else
-		#define BRAIN_API __declspec(dllimport)
-	#endif
-#else
-	#define BRAIN_API
-#endif
-#else
-	#error Spot Brain only supports Wndows!
-#endif
+#include "PlatformDetection.h"
 
 #ifdef SB_DEBUG
 	#if defined(SB_PLATFORM_WINDOWS)

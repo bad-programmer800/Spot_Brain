@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Spot_Brain/Core/Core.h"
+#include <glm/glm.hpp>
+
 #include "Spot_Brain/Core/KeyCodes.h"
 #include "Spot_Brain/Core/MouseCodes.h"
 
@@ -12,7 +13,7 @@ namespace Brain {
 	public:
 		static bool IsKeyPressed(KeyCode key);
 		static bool IsMouseButtonPressed(MouseCode button);
-		static std::pair<float, float> GetMousePosition();
+		static glm::vec2 GetMousePosition();
 		static float GetMouseX();
 		static float GetMouseY();
 

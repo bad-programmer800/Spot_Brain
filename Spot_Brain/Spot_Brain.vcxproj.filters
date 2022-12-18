@@ -1335,7 +1335,7 @@
     <ClInclude Include="src\Spot_Brain\Core\Application.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spot_Brain\Core\Core.h">
+    <ClInclude Include="src\Spot_Brain\Core\Base.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Core\EntryPoint.h">
@@ -1430,6 +1430,8 @@
     <ClInclude Include="src\Spot_Brain\Scene\Entity.h" />
     <ClInclude Include="src\Spot_Brain\Renderer\Camera.h" />
     <ClInclude Include="src\Spot_Brain\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\ScriptableEntity.h" />
+    <ClInclude Include="src\Spot_Brain\Core\PlatformDetection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">

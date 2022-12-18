@@ -153,11 +153,13 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Spot_Brain\Core\PlatformDetection.h" />
     <ClInclude Include="src\Spot_Brain\Renderer\Camera.h" />
     <ClInclude Include="src\Spot_Brain\Scene\Components.h" />
     <ClInclude Include="src\Spot_Brain\Scene\Entity.h" />
     <ClInclude Include="src\Spot_Brain\Scene\Scene.h" />
     <ClInclude Include="src\Spot_Brain\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Spot_Brain\Scene\ScriptableEntity.h" />
     <ClInclude Include="Vendor\glm\glm\common.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="Vendor\glm\glm\detail\_fixes.hpp" />
@@ -584,7 +586,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Spot_Brain\Core\Application.h" />
-    <ClInclude Include="src\Spot_Brain\Core\Core.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Base.h" />
     <ClInclude Include="src\Spot_Brain\Core\EntryPoint.h" />
     <ClInclude Include="src\Spot_Brain\Core\Input.h" />
     <ClInclude Include="src\Spot_Brain\Core\KeyCodes.h" />

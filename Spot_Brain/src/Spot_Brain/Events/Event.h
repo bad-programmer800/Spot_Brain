@@ -1,7 +1,9 @@
 #pragma once
 
-#include "sbpch.h"
-#include "Spot_Brain/Core/Core.h"
+#include <functional>
+
+#include "Spot_Brain/Debug/Instrumentor.h"
+#include "Spot_Brain/Core/Base.h"
 
 namespace Brain {
 

@@ -18,14 +18,8 @@
 	#define SB_DEBUGBREAK()
 #endif // SB_DEBUG
 
-
-#ifdef SB_ENABLE_ASSERTS
-	#define SB_ASSERT(x, ...) { if(!(x)) { SB_ERROR("Assertion Failed: {0}", __VA_ARGS__); SB_DEBUGBREAK();}}
-	#define SB_CORE_ASSERT(x, ...) { if(!(x)) { SB_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); SB_DEBUGBREAK();}}
-#else
-	#define SB_ASSERT(x, ...)
-	#define SB_CORE_ASSERT(x, ...)
-#endif
+#define SB_EXPAND_MACRO(x) x
+#define SB_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1 << x)
 
@@ -51,3 +45,6 @@ namespace Brain {
 	}
 
 }
+
+#include "Spot_Brain/Core/Log.h"
+#include "Spot_Brain/Core/Assert.h"

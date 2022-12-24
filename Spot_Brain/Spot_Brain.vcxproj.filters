@@ -1432,6 +1432,7 @@
     <ClInclude Include="src\Spot_Brain\Scene\SceneCamera.h" />
     <ClInclude Include="src\Spot_Brain\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\Spot_Brain\Core\PlatformDetection.h" />
+    <ClInclude Include="src\Spot_Brain\Core\Assert.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">

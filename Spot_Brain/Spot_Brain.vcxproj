@@ -153,6 +153,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Spot_Brain\Core\Assert.h" />
     <ClInclude Include="src\Spot_Brain\Core\PlatformDetection.h" />
     <ClInclude Include="src\Spot_Brain\Renderer\Camera.h" />
     <ClInclude Include="src\Spot_Brain\Scene\Components.h" />

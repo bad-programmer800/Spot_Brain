@@ -13,3 +13,6 @@
 [submodule "Spot_Brain/Vendor/glm"]
 	path = Spot_Brain/Vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "Spot_Brain/Vendor/yaml-cpp/yaml-cpp"]
+	path = Spot_Brain/Vendor/yaml-cpp/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp

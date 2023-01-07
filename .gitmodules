@@ -16,3 +16,6 @@
 [submodule "Spot_Brain/Vendor/yaml-cpp/yaml-cpp"]
 	path = Spot_Brain/Vendor/yaml-cpp/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp
+[submodule "Spot_Brain/Vendor/ImGuizmo"]
+	path = Spot_Brain/Vendor/ImGuizmo
+	url = https://github.com/CedricGuillemet/ImGuizmo

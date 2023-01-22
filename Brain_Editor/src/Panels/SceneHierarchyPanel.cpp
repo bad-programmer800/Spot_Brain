@@ -6,6 +6,11 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Spot_Brain/Scene/Components.h"
+#include <cstring>
+
+#ifdef _MSVC_LANG
+	#define _CRT_SECURE_NO_WARNINGS
+#endif
 
 namespace Brain {
 
@@ -17,6 +22,7 @@ namespace Brain {
 	void SceneHierarchyPanel::SetContext(const Ref<Scene>& context)
 	{
 		m_Context = context;
+		m_SelectionContext = {};
 	}
 
 	void SceneHierarchyPanel::OnImGuiRender()
@@ -205,7 +211,7 @@ namespace Brain {
 
 			char buffer[256];
 			memset(buffer, 0, sizeof(buffer));
-			strcpy_s(buffer, sizeof(buffer), tag.c_str());
+			std::strncpy(buffer, tag.c_str(), sizeof(buffer));
 			if (ImGui::InputText("##Tag", buffer, sizeof(buffer)))
 			{
 				tag = std::string(buffer);
@@ -222,13 +228,19 @@ namespace Brain {
 		{
 			if (ImGui::MenuItem("Camera"))
 			{
-				m_SelectionContext.AddComponent<CameraComponent>();
+				if (!m_SelectionContext.HasComponent<CameraComponent>())
+					m_SelectionContext.AddComponent<CameraComponent>();
+				else
+					SB_CORE_WARN("This entity already has the Camera Component");
 				ImGui::CloseCurrentPopup();
 			}
 
 			if (ImGui::MenuItem("Sprite Renderer"))
 			{
-				m_SelectionContext.AddComponent<SpriteRendererComponent>();
+				if (!m_SelectionContext.HasComponent<SpriteRendererComponent>())
+					m_SelectionContext.AddComponent<SpriteRendererComponent>();
+				else
+					SB_CORE_WARN("This entity already has the Sprite Renderer Component");
 				ImGui::CloseCurrentPopup();
 			}
 			ImGui::EndPopup();

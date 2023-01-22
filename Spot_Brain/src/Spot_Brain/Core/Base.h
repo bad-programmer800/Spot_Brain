@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "PlatformDetection.h"
+#include "Spot_Brain/Core/PlatformDetection.h"
 
 #ifdef SB_DEBUG
 	#if defined(SB_PLATFORM_WINDOWS)

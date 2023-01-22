@@ -10,7 +10,7 @@ namespace Brain {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None:	SB_CORE_ASSERT(false, "RendererAPI::None is not currently supported!");
+		case RendererAPI::API::None:	SB_CORE_ASSERT(false, "RendererAPI::None is not currently supported!"); return nullptr;
 		case RendererAPI::API::OpenGL:	return CreateRef<OpenGLTexture2D>(width, height);
 		}
 
@@ -23,7 +23,7 @@ namespace Brain {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::API::None:	SB_CORE_ASSERT(false, "RendererAPI::None is not currently supported!");
+		case RendererAPI::API::None:	SB_CORE_ASSERT(false, "RendererAPI::None is not currently supported!"); return nullptr;
 			case RendererAPI::API::OpenGL:	return CreateRef<OpenGLTexture2D>(path);
 		}
 
@@ -31,4 +31,6 @@ namespace Brain {
 		return nullptr;
 
 	}
+
+
 }

@@ -2,6 +2,7 @@
 #include <Spot_Brain/Core/EntryPoint.h>
 
 #include "EditorLayer.h"
+#include "SegmentationLayer.h"
 
 namespace Brain {
 
@@ -13,6 +14,7 @@ namespace Brain {
 		{
 			// PushLayer(new ExampleLayer());
 			PushLayer(new EditorLayer());
+			// PushLayer(new SegmentationLayer());
 		}
 
 		~BrainEditor() {

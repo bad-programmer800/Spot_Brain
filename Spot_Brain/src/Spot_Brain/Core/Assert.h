@@ -2,7 +2,6 @@
 
 #include "Spot_Brain/Core/Base.h"
 #include "Spot_Brain/Core/Log.h"
-
 #include <filesystem>
 
 #ifdef SB_ENABLE_ASSERTS

@@ -24,9 +24,10 @@ namespace Brain {
 		void BlockEvents(bool block) { m_BlockEvents = block; }
 
 		void SetDarkThemeColors();
+		/* void SetCandyThemeColors(); */
 
 	private:
 		bool m_BlockEvents = true;
 		float m_Time = 0.0f;
-	};//Donkey
+	};
 }

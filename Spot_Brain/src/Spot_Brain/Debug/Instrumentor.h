@@ -30,25 +30,26 @@ namespace Brain {
 
 	class Instrumentor
 	{
-	private:
-		std::mutex m_Mutex;
-		InstrumentationSession* m_CurrentSession;
-		std::ofstream m_OutputStream;
+	
 	public:
-		Instrumentor()
-			: m_CurrentSession(nullptr)
-		{
-		}
+		Instrumentor(const Instrumentor&) = delete;
+		Instrumentor(Instrumentor&&) = delete;
 
-		void BeginSession(const std::string& name, const std::string& filepath = "result.json")
+		void BeginSession(const std::string& name, const std::string& filepath = "results.json")
 		{
 			std::lock_guard lock(m_Mutex);
-			if (m_CurrentSession) {
-				if (Log::GetCoreLogger()) {
+			if (m_CurrentSession) 
+			{
+				if (Log::GetCoreLogger()) // Edge Case: BeginSession() might be before Log::Init()
+				{
 					SB_CORE_ERROR("Instrumentor::BeginSession('{0}') when session '{1}' already open!", name, m_CurrentSession->Name);
 				}
 				InternalEndSession();
 			}
+
+
+
+
 			m_OutputStream.open(filepath);
 
 			if (m_OutputStream.is_open())
@@ -75,15 +76,12 @@ namespace Brain {
 		{
 			std::stringstream json;
 
-			std::string name = result.Name;
-			std::replace(name.begin(), name.end(), '"', '\'');
-
 			json << std::setprecision(3) << std::fixed;
 			json << ",{";
 			json << "\"cat\":\"function\",";
 			json << "\"dur\":" << (result.ElapsedTime.count()) << ',';
-			json << "\"name\":\"" << name << "\",";
-			json << "\"ph\":\"x\",";
+			json << "\"name\":\"" << result.Name << "\",";
+			json << "\"ph\":\"X\",";
 			json << "\"pid\":0,";
 			json << "\"tid\":" << result.ThreadID << ",";
 			json << "\"ts\":" << result.Start.count();
@@ -103,6 +101,16 @@ namespace Brain {
 			return instance;
 		}
 	private:
+		Instrumentor()
+			: m_CurrentSession(nullptr)
+		{
+		}
+
+		~Instrumentor()
+		{
+			EndSession();
+		}
+
 		void WriteHeader()
 		{
 			m_OutputStream << "{\"otherData\": {}, \"traceEvents\":[{}";
@@ -125,6 +133,11 @@ namespace Brain {
 				m_CurrentSession = nullptr;
 			}
 		}
+
+	private:
+		std::mutex m_Mutex;
+		InstrumentationSession* m_CurrentSession;
+		std::ofstream m_OutputStream;
 	};
 
 	class InstrumentationTimer
@@ -159,15 +172,66 @@ namespace Brain {
 			bool m_Stopped;
 
 	};
+
+	namespace InstrumentorUtils {
+
+		template <size_t N>
+		struct ChangeResult
+		{
+			char Data[N];
+		};
+
+		template <size_t N, size_t K>
+		constexpr auto CleanupOutputString(const char(&expr)[N], const char(&remove)[K])
+		{
+			ChangeResult<N> result = {};
+
+			size_t srcIndex = 0;
+			size_t dstIndex = 0;
+			while (srcIndex < N)
+			{
+				size_t matchIndex = 0;
+				while (matchIndex < K - 1 && srcIndex + matchIndex < N - 1 && expr[srcIndex + matchIndex] == remove[matchIndex])
+					matchIndex++;
+				if (matchIndex == K - 1)
+					srcIndex += matchIndex;
+				result.Data[dstIndex++] = expr[srcIndex] == '"' ? '\'' : expr[srcIndex];
+				srcIndex++;
+			}
+			return result;
+		}
+	}
 }
 
 
 #define SB_PROFILE 0
 #if SB_PROFILE
+
+	#if defined(__GNUC__) || (defined(__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
+		#define SB_FUNC_SIG __PRETTY_FUNCTION__
+	#elif defined(__DMC__) && (__DMC__ >= 0x810)
+		#define SB_FUNC_SIG __PRETTY_FUNCTION__
+	#elif (defined(__FUNCSIG__) || (_MSC_VER))
+		#define SB_FUNC_SIG __FUNCSIG__
+	#elif (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
+		#define SB_FUNC_SIG __FUNCTION__
+	#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
+		#define SB_FUNC_SIG __FUNC__
+	#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901)
+		#define SB_FUNC_SIG __func__
+	#elif defined(__cplusplus) && (__cplusplus >= 201103)
+		#define SB_FUNC_SIG __func__
+	#else
+		#define SB_FUNC_SIG "SB_FUNC_SIG unknown!"
+	#endif
+
 	#define SB_PROFILE_BEGIN_SESSION(name, filepath) ::Brain::Instrumentor::Get().BeginSession(name, filepath)
 	#define SB_PROFILE_END_SESSION() ::Brain::Instrumentor::Get().EndSession()
-	#define SB_PROFILE_SCOPE(name) ::Brain::InstrumentationTimer timer##__LINE__(name);
-	#define SB_PROFILE_FUNCTION() SB_PROFILE_SCOPE(__FUNCSIG__)
+	#define SB_PROFILE_SCOPE_LINE2(name, line) fixedName##line = ::Brain::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
+																	::Brain::InstrumentationTimer timer##line(fixedName##line.Data)
+	#define SB_PROFILE_SCOPE_LINE(name, line) SB_PROFILE_SCOPE_LINE2(name, line)
+	#define SB_PROFILE_SCOPE(name) SB_PROFILE_SCOPE_LINE(name, __LINE__)
+	#define SB_PROFILE_FUNCTION() SB_PROFILE_SCOPE(SB_FUNC_SIG)
 #else
 	#define SB_PROFILE_BEGIN_SESSION(name, filepath)
 	#define SB_PROFILE_END_SESSION()

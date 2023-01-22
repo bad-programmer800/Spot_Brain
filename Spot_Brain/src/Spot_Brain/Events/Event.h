@@ -1,5 +1,4 @@
 #pragma once
-
 #include <functional>
 
 #include "Spot_Brain/Debug/Instrumentor.h"

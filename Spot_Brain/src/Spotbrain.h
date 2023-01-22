@@ -5,6 +5,7 @@
 #include "Spot_Brain/Core/Application.h"
 #include "Spot_Brain/Core/Layer.h"
 #include "Spot_Brain/Core/Log.h"
+#include "Spot_Brain/Core/Assert.h"
 
 #include "Spot_Brain/Core/Timestep.h"
 
@@ -34,6 +35,3 @@
 #include "Spot_Brain/Renderer/OrthographicCamera.h"
 // ----------------------------------
 
-// -- Entry Point -------------------
-// (commit 101719) #include "Spot_Brain/Core/EntryPoint.h"
-// ----------------------------------

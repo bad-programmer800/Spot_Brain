@@ -3,6 +3,7 @@
 
 #include <stb_image.h>
 
+
 namespace Brain {
 
 	OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height)
@@ -69,6 +70,8 @@ namespace Brain {
 		stbi_image_free(data);
 
 	}
+
+	
 	
 	OpenGLTexture2D::~OpenGLTexture2D()
 	{

@@ -4,6 +4,9 @@
     <Filter Include="Vendor">
       <UniqueIdentifier>{935FDCD7-7F01-07AE-68BC-1A0254FD8DFE}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vendor\ImGuizmo">
+      <UniqueIdentifier>{530792E3-BF92-FFA7-C8A3-829C34AE5BA8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Vendor\glm">
       <UniqueIdentifier>{627B7327-4E33-B574-B73A-8ED0A3115065}</UniqueIdentifier>
     </Filter>
@@ -52,11 +55,20 @@
     <Filter Include="src\Spot_Brain\Renderer">
       <UniqueIdentifier>{33201763-9F57-5FFA-A861-C31D141886F3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Spot_Brain\Scene">
+      <UniqueIdentifier>{CACCED1B-B65B-77E5-5F7A-8BE04BE8878B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Spot_Brain\Utils">
+      <UniqueIdentifier>{0D611B1C-F9EF-A4E5-A20E-B9E08E7CB58B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Spot_Brain\imgui">
       <UniqueIdentifier>{176D811D-03FC-0AE7-AC1A-1FE298881B8D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Vendor\ImGuizmo\ImGuizmo.h">
+      <Filter>Vendor\ImGuizmo</Filter>
+    </ClInclude>
     <ClInclude Include="Vendor\glm\glm\common.hpp">
       <Filter>Vendor\glm\glm</Filter>
     </ClInclude>
@@ -1335,6 +1347,9 @@
     <ClInclude Include="src\Spot_Brain\Core\Application.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Core\Assert.h">
+      <Filter>src\Spot_Brain\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spot_Brain\Core\Base.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
@@ -1359,6 +1374,9 @@
     <ClInclude Include="src\Spot_Brain\Core\MouseCodes.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Core\PlatformDetection.h">
+      <Filter>src\Spot_Brain\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spot_Brain\Core\Timestep.h">
       <Filter>src\Spot_Brain\Core</Filter>
     </ClInclude>
@@ -1381,6 +1399,9 @@
       <Filter>src\Spot_Brain\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Renderer\Buffer.h">
+      <Filter>src\Spot_Brain\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Renderer\Camera.h">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Spot_Brain\Renderer\FrameBuffer.h">
@@ -1416,6 +1437,27 @@
     <ClInclude Include="src\Spot_Brain\Renderer\VertexArray.h">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Scene\Components.h">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Scene\Entity.h">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Scene\Scene.h">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Scene\SceneCamera.h">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Scene\SceneSerializer.h">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Scene\ScriptableEntity.h">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spot_Brain\Utils\PlatformUtils.h">
+      <Filter>src\Spot_Brain\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spot_Brain\imgui\ImGuiLayer.h">
       <Filter>src\Spot_Brain\imgui</Filter>
     </ClInclude>
@@ -1425,16 +1467,13 @@
     <ClInclude Include="src\sbpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spot_Brain\Scene\Scene.h" />
-    <ClInclude Include="src\Spot_Brain\Scene\Components.h" />
-    <ClInclude Include="src\Spot_Brain\Scene\Entity.h" />
-    <ClInclude Include="src\Spot_Brain\Renderer\Camera.h" />
-    <ClInclude Include="src\Spot_Brain\Scene\SceneCamera.h" />
-    <ClInclude Include="src\Spot_Brain\Scene\ScriptableEntity.h" />
-    <ClInclude Include="src\Spot_Brain\Core\PlatformDetection.h" />
-    <ClInclude Include="src\Spot_Brain\Core\Assert.h" />
+    <ClInclude Include="src\Spot_Brain\Math\Math.h" />
+    <ClInclude Include="src\Spot_Brain\Renderer\EditorCamera.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Vendor\ImGuizmo\ImGuizmo.cpp">
+      <Filter>Vendor\ImGuizmo</Filter>
+    </ClCompile>
     <ClCompile Include="Vendor\stb_image\stb_image.cpp">
       <Filter>Vendor\stb_image</Filter>
     </ClCompile>
@@ -1460,6 +1499,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -1516,6 +1558,18 @@
     <ClCompile Include="src\Spot_Brain\Renderer\VertexArray.cpp">
       <Filter>src\Spot_Brain\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Scene\Entity.cpp">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Scene\Scene.cpp">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Scene\SceneCamera.cpp">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spot_Brain\Scene\SceneSerializer.cpp">
+      <Filter>src\Spot_Brain\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Spot_Brain\imgui\ImGuiBuild.cpp">
       <Filter>src\Spot_Brain\imgui</Filter>
     </ClCompile>
@@ -1525,8 +1579,7 @@
     <ClCompile Include="src\sbpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spot_Brain\Scene\Scene.cpp" />
-    <ClCompile Include="src\Spot_Brain\Scene\Entity.cpp" />
-    <ClCompile Include="src\Spot_Brain\Scene\SceneCamera.cpp" />
+    <ClCompile Include="src\Spot_Brain\Math\Math.cpp" />
+    <ClCompile Include="src\Spot_Brain\Renderer\EditorCamera.cpp" />
   </ItemGroup>
 </Project>

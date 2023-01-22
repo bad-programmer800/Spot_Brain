@@ -102,7 +102,7 @@ namespace Brain {
 			SB_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error!");
 			pos = source.find(typeToken, nextLinePos); //Start of next shader type declaration
 
-			shaderSources[ShaderTypeFromString(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
+			shaderSources[ShaderTypeFromString(type)] = (pos == std::string::npos) ? source.substr(nextLinePos) : source.substr(nextLinePos, pos - nextLinePos);
 		}
 		return shaderSources;
 	}

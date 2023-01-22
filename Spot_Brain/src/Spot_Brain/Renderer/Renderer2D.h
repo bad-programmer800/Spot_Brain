@@ -5,6 +5,7 @@
 #include "Spot_Brain/Renderer/Texture.h"
 
 #include "Spot_Brain/Renderer/Camera.h"
+#include "Spot_Brain/Renderer/EditorCamera.h"
 
 namespace Brain {
 	class Renderer2D
@@ -14,6 +15,7 @@ namespace Brain {
 		static void Shutdown();
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const EditorCamera& camera);
 		static void BeginScene(const OrthographicCamera& camera); // TODO: Remove
 		static void EndScene();
 		static void Flush();

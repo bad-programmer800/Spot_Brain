@@ -1,7 +1,5 @@
 #include "sbpch.h"
 #include "Spot_Brain/Core/Application.h"
-#include "Spot_Brain/Core/Log.h"
-
 
 #include "Spot_Brain/Renderer/Renderer.h"
 
@@ -17,9 +15,10 @@ Application* Application::s_Instance = nullptr;
 	{
 		SB_PROFILE_FUNCTION();
 
+		
+		
 		SB_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
-
 		m_Window = Window::Create(WindowProps(name));
 		m_Window->SetEventCallback(SB_BIND_EVENT_FN(Application::OnEvent));
 
@@ -105,6 +104,9 @@ Application* Application::s_Instance = nullptr;
 		}
 	}
 
+	
+	
+	
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
 		m_Running = false;

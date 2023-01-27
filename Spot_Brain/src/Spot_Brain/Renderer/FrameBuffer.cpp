@@ -7,12 +7,12 @@
 
 namespace Brain {
 
-	Ref<FrameBuffer> FrameBuffer::Create(const FrameBufferSpecification& spec)
+	Ref<Framebuffer> Framebuffer::Create(const FramebufferSpecification& spec)
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:	SB_CORE_ASSERT(false, "RendererAPI::None is not currently supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:	return CreateRef<OpenGLFrameBuffer>(spec);
+		case RendererAPI::API::OpenGL:	return CreateRef<OpenGLFramebuffer>(spec);
 		}
 
 		SB_CORE_ASSERT(false, "Unknown RendererAPI!");
